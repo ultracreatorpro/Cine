@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Películas y Juegos</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-42KL3XGDK9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-42KL3XGDK9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-42KL3XGDK9');
-</script>
+      gtag('config', 'G-42KL3XGDK9');
+    </script>
     <style>
         /* Estilos para la cabecera */
         header {
@@ -36,10 +36,10 @@
 
         /* Estilo para el nuevo icono */
         .new-icon {
-        width: 35px;
-        height: 35px;
-        cursor: pointer;
-        margin-left: 10px; /* Espaciado entre los íconos */
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            margin-left: 10px; /* Espaciado entre los íconos */
         }
 
         /* Estilo para el icono de WhatsApp */
@@ -71,10 +71,31 @@
             margin: 0;
         }
 
-        .category h2 {
-            font-size: 16px;
-            color: #333;
+        /* Nuevo Estilo para el encabezado de la categoría */
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
+        }
+
+        .category-header h2 {
+            font-size: 14px;
+            color: #333;
+            margin: 0;
+        }
+
+        /* Estilos para el enlace "Ver más" */
+        .ver-mas {
+            font-size: 14px;
+            color: #ff6600; /* Color llamativo */
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .ver-mas:hover {
+            color: #e65c00; /* Color al pasar el cursor */
         }
 
         .category .scroll-category {
@@ -162,76 +183,77 @@
             cursor: pointer;
             z-index: 1001;
         }
-/* Estilos para el modal de bienvenida */
-#welcomeModal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semi-transparente */
-    z-index: 2000; /* Por encima de otros elementos */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-#welcomeModal .modal-content {
-    background-color: #1a1a1a; /* Negro sólido */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-    max-width: 90%;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+        /* Estilos para el modal de bienvenida */
+        #welcomeModal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semi-transparente */
+            z-index: 2000; /* Por encima de otros elementos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* Título del modal */
-.modal-content h2 {
-  color: white; /* Asegura que el título sea blanco */
-  text-align: center;
-}
+        #welcomeModal .modal-content {
+            background-color: #1a1a1a; /* Negro sólido */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            max-width: 90%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
 
-#welcomeModal .modal-content h2 {
-    margin-bottom: 15px;
-    font-size: 24px;
-}
+        /* Título del modal */
+        .modal-content h2 {
+          color: white; /* Asegura que el título sea blanco */
+          text-align: center;
+        }
 
-#welcomeModal .modal-content p {
-    margin-bottom: 20px;
-    font-size: 16px;
-}
+        #welcomeModal .modal-content h2 {
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
 
-#welcomeModal .modal-content button {
-    padding: 10px 20px;
-    background-color: #ff6600; /* Color llamativo para el botón */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        #welcomeModal .modal-content p {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
 
-#welcomeModal .modal-content button:hover {
-    background-color: #e65c00;
-}
+        #welcomeModal .modal-content button {
+            padding: 10px 20px;
+            background-color: #ff6600; /* Color llamativo para el botón */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #welcomeModal .modal-content button:hover {
+            background-color: #e65c00;
+        }
 
         /* Estilo del pie de página */
         footer {
-        background-color: #003366; /* Azul marino */
-        color: white;
-        text-align: center;
-        padding: 10px;
-        position: relative;
-        bottom: 0;
-        width: 375px;
+            background-color: #003366; /* Azul marino */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 375px;
         }
 
         footer p {
-        font-size: 12px; /* Letras un poco pequeñas */
-        margin: 0;
+            font-size: 12px; /* Letras un poco pequeñas */
+            margin: 0;
         }
 
     </style>
@@ -240,10 +262,10 @@
 
     <!-- Cabecera con texto y botón de WhatsApp -->
     <header>
-        <h1>🎬 +5000 Películas y Juegos</h1>
+        <h1>🎬 +5000 Películas y Series</h1>
         <div>
-        <img src="https://cdn-icons-png.flaticon.com/512/2780/2780137.png" class="new-icon" alt="Nuevo Icono">
-        <img src="https://i.ibb.co/Wx9gnPc/Post-de-Instagram-Semana-de-la-Lactancia-Materna-Ilustrado-Rosa-20240915-180308-0000.png" class="whatsapp-icon" alt="Compartir en WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/2780/2780137.png" class="new-icon" alt="Nuevo Icono">
+            <img src="https://i.ibb.co/Wx9gnPc/Post-de-Instagram-Semana-de-la-Lactancia-Materna-Ilustrado-Rosa-20240915-180308-0000.png" class="whatsapp-icon" alt="Compartir en WhatsApp">
         </div>
     </header>
 
@@ -256,9 +278,12 @@
         <img src="https://i.pinimg.com/736x/d2/84/9a/d2849a8b3534251294874ec578c84a1b.jpg" alt="Película 5" data-video="https://dl.dropboxusercontent.com/scl/fi/9t1ssgrlcnx8ir70ku4px/K6yn7f7u-p3ta5nd6a.mp4?rlkey=fht4c7krhd1ri66rueomazzzl&st=px3ll9ip">
     </div>
 
-<!-- Categorías de películas con scroll horizontal -->
+    <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>ESTRENOS 2️⃣0️⃣2️⃣4️⃣</h2>
+        <div class="category-header">
+            <h2>ESTRENOS 2️⃣0️⃣2️⃣4️⃣</h2>
+            <a href="https://estrenos.serviciosonlines.com" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://i.ibb.co/NYBfrtt/road.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/omir5ir4001n3xyvhhnu6/R0AD-H0US3.mp4?rlkey=dnpz2b15z29ewsak8lpz7d6z2">
@@ -386,7 +411,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>💣 ACCIÓN</h2>
+        <div class="category-header">
+            <h2>💣 ACCIÓN</h2>
+            <a href="https://estrenos.serviciosonlines.com" class="ver-mas">Ver más</a>
+            </div>
         <div class="scroll-category">
             <div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoHBRrDiAz5yjGT-o0gAQO_n6QRLUwB4X7iA&s" alt="Acción 1" data-video="https://archive.org/download/48484/Thor%20Amor%20y%20Trueno.ia.mp4">
@@ -437,7 +465,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>🎁 INFANTILES</h2>
+        <div class="category-header">
+            <h2>🎁 INFANTILES</h2>
+            <a href="https://estrenos.serviciosonlines.com/" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://i.ibb.co/nbVyKsn/1000173580.jpg" alt="Acción 1" data-video="https://dl.dropboxusercontent.com/scl/fi/29r2d21czdrjjf1myo3z0/22222.mp4?rlkey=ri90ypu3o2xlygxnb3yazgpu1&dl=0">
@@ -512,7 +543,10 @@
 
  <!-- Nuevo menú de categorías con scroll horizontal -->
     <div class="category">    
-        <h2>🛍 VENTA DE SEGUIDORES</h2>
+        <div class="category-header">
+            <h2>🛍 VENTA DE SEGUIDORES</h2>
+            <a href="https://t.me/PubliAdmin" class="ver-mas">Ver más</a>
+        </div>
     <div class="telegram-category">
         <img src="https://i.ibb.co/jhNHT7S/500-SEGUID-5-250-CUP-1000-SEGUID-10-500-CUP-5000-SEGUID-20-15-20240916-205448-0000.png" alt="Instagram 1" onclick="window.open('https://t.me/PubliAdmin', '_blank')">
         <img src="https://i.ibb.co/9p5XjHW/Copia-de-500-SEGUID-5-250-CUP-1000-SEGUID-10-500-CUP-5000-SEGUID-20240917-002843-0000.png" alt="Telegram 2" onclick="window.open('https://t.me/PubliAdmin', '_blank')">
@@ -523,7 +557,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>🍿 ROMÁNTICAS</h2>
+        <div class="category-header">
+            <h2>❤ ROMÁNTICAS</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/VMOt5scbGmBKDvkfHjZN6Ki54i.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/osyw6fgbiiwzjkx0bv9oy/Titanic.mp4?rlkey=b07hibjgt20txijg0citjdshs&dl=0">
@@ -574,7 +611,10 @@
 
  <!-- Nuevo menú de categorías con scroll horizontal -->
     <div class="category">    
-        <h2>🔴 SERIES PARA VER</h2>
+        <div class="category-header">
+            <h2>🔴 SERIES PARA VER</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
     <div class="telegram-category">
         <img src="https://i.ibb.co/6PcJJT3/IMG-20240921-003012-959.jpg" alt="Instagram 1" onclick="window.open('https://series.serviciosonlines.com/', '_blank')">
         <img src="https://es.web.img3.acsta.net/pictures/21/09/29/12/02/1288399.jpg" alt="Telegram 2" onclick="window.open('https://series.serviciosonlines.com/', '_blank')">
@@ -585,7 +625,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>😈 TERROR</h2>
+        <div class="category-header">
+            <h2>👿 TERROR</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://i.ibb.co/2MSvDYn/TALK.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/tfudbvzuvm62umij54aut/T4LKT0M3.mp4?rlkey=cwly1qsak4zins8rtsqd99wzn">
@@ -632,7 +675,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>♥️ DRAMA - SUSPENSO</h2>
+        <div class="category-header">
+            <h2>🍿 DRAMAS - SUSPENSO</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKzetHubVY4OQTypbGfL_965ErMTSqgFbUhQ&s" alt="Acción 1" data-video="https://ia801407.us.archive.org/16/items/lat-720-b.-3.4.-u.-t.-y-4.-n.-d-t.-h.-3-b.-3.4.-s.-t/LAT-720%20B.3.4.U.T.Y_4.N.D_T.H.3_B.3.4.S.T.mp4?rlkey=cwly1qsak4zins8rtsqd99wzn">
@@ -683,7 +729,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>💥 ESTUDIO MARVEL</h2>
+        <div class="category-header">
+            <h2>✅ ESTUDIO MARVEL</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/i5eSA5DK5iAv53SB4yv57bN56o6.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/v2usezfj93kp0pqajqo69/Capit-n-Am-rica-el-primer-vengador.mp4?rlkey=iv8j1bumvv75dgjkbniccf69r&st=v03t5wy3&dl=0">
@@ -726,7 +775,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>🔥 CÓMIC DC </h2>
+        <div class="category-header">
+            <h2>☢ CÓMIC DC</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/imekS7f1OuHyUP2LAiTEM0zBzUz.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/vsxfmexs0gohrrg7d90ks/la-mujer-maravilla-1.mp4?rlkey=3hgisdmasp01iozaio3kh34on&st=ep4kn5qg&dl=0">
@@ -769,7 +821,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>🧠 CIENCIA FICCIÓN</h2>
+        <div class="category-header">
+            <h2>👽 CIENCIA FICCIÓN</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/e7jW5JDUsXQAgmCgNSvi0vnKqkI.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/9twgu9sfca7df414pwd98/Perspectiva.mp4?rlkey=qfa9kzbmggqvm2kxza4a5rvre&dl=0">
@@ -816,7 +871,10 @@
 
 <!-- Categorías de películas con scroll horizontal -->
     <div class="category">
-        <h2>🤣 COMEDIAS</h2>
+        <div class="category-header">
+            <h2>🤣 COMEDIAS</h2>
+            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
+        </div>
         <div class="scroll-category">
             <div>
                 <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9QusyGRq3X8zmbrqGM1ynGuPFB5.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/uj0ta097dwrl5qc9seic8/El-precio-de-la-novia.mp4?rlkey=7qn04bwv6ogm0eb0xv9micorj&dl=0">
@@ -969,3 +1027,4 @@
 
 </body>
 </html>
+            
