@@ -1154,7 +1154,7 @@
         } catch (error) {
             console.error("Error al obtener los datos de la API:", error);
             if (cryptoListElement) {
-                cryptoListElement.innerHTML = '<li style="color: #ff4757; text-align: center; padding: 10px 0;">¡Error! No se pudieron cargar los precios.</li>';
+                cryptoListElement.innerHTML = '<li style="color: #ff4757; text-align: center; padding: 10px 0;">¡Error! No se pudieron cargar los precios en este momento, revise su conexión a Internet.</li>';
             }
             if (updateTimeElement) {
                 updateTimeElement.textContent = 'N/A';
@@ -1186,6 +1186,7 @@
 </body>
 </html>
                                                                                                                                                                                                                          </html>
+
 
 
 
