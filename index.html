@@ -3,1273 +3,1097 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Meta descripción y palabras clave -->
-    <meta name="description" content="Disfruta de las mejores películas y juegos gratis. Descarga y juega a los títulos más populares.">
-    <meta name="keywords" content="películas, estrenos 2024, juegos modificados, descargar películas gratis, cine clásico, juegos gratis, juegos para pc, películas online, peliculas en streaming, descargar juegos">
-    <title>Películas y Juegos</title>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J05QXSEQBS"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <title>CryptoNews Pro | Noticias y Análisis de Criptomonedas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0f3460;
+            --accent: #00c9a7;
+            --dark: #121826;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border: #e0e0e0;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
 
-  gtag('config', 'G-J05QXSEQBS');
-</script>
-    
-   <style>
-    /* Estilo para el fondo general */
-    body {
-        background-color: #262323; /* Fondo negro */
-        color: white; /* Texto blanco */
-    }
-        /* Estilos para la cabecera */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fb;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
         header {
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: red;
+            background-color: var(--header-bg);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 30px; /* Altura reducida */
-        }
-            #lock-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #lock-screen input {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    #lock-screen button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    #lock-screen button:hover {
-      background-color: #45a049;
-    }
-
-        header h1 {
-            font-size: 14px;
-            color: white;
-            margin: 0;
         }
 
-        /* Estilo para el nuevo icono */
-        .new-icon {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-            margin-left: 10px; /* Espaciado entre los íconos */
-        }
-
-        /* Estilo para el icono de WhatsApp */
-        .whatsapp-icon {
-            width: 35px;
-            height: 35px;
-            cursor: pointer;
-        }
-
-        /* Estilo para la galería principal con scroll automático */
-        .main-gallery {
-            display: flex;
-            overflow: hidden;
-            margin: 10px 0;
-            width: 100%;
-        }
-
-        .main-gallery img {
-            border-radius: 20px;
-            margin-right: 20px;
-            width: 430px;
-            height: 230px;
-            object-fit: cover;
-            cursor: pointer;
-            color: white; /* Texto blanco */
-        }
-
-        /* Estilo para las categorías de películas */
-        .category {
-            margin: 0;
-        }
-
-        /* Nuevo Estilo para el encabezado de la categoría */
-        .category-header {
+        .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 28px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #f1f3f4;
+            border-radius: 24px;
+            padding: 8px 16px;
+            width: 300px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box i {
+            color: var(--gray);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0d62d9;
+        }
+
+        /* Banner de Publicidad */
+        .ad-banner {
+            background-color: #f8f9fa;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .ad-banner.horizontal {
+            width: 100%;
+            height: 100px;
+        }
+
+        .ad-banner.vertical {
+            width: 300px;
+            height: 600px;
+        }
+
+        .ad-banner.small {
+            width: 300px;
+            height: 250px;
+        }
+
+        /* Gráficos de Mercado */
+        .market-overview {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .market-overview h2 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 22px;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .stat-card.up {
+            border-left-color: #00c9a7;
+        }
+
+        .stat-card.down {
+            border-left-color: #ff4757;
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .stat-change {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .stat-change.up {
+            color: #00c9a7;
+        }
+
+        .stat-change.down {
+            color: #ff4757;
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            height: 400px;
+        }
+
+        /* Contenido Principal */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .news-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .news-card-content {
+            padding: 20px;
+        }
+
+        .news-category {
+            display: inline-block;
+            background-color: rgba(26, 115, 232, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
             margin-bottom: 10px;
         }
 
-        .category-header h2 {
-            font-size: 16px;
-            color: #333;
-            margin: 0;
-            color: white; /* Texto blanco */
+        .news-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        /* Estilos para el enlace "Ver más" */
-        .ver-mas {
+        .news-card p {
+            color: var(--gray);
             font-size: 14px;
-            color: white; /* Color llamativo */
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .ver-mas:hover {
-            color: #e65c00; /* Color al pasar el cursor */
-        }
-
-        .category .scroll-category {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-        }
-
-        .category .scroll-category img {
-            border-radius: 10px;
-            width: 110px; /* Tamaño reducido */
-            height: 170px; /* Tamaño reducido */
-            margin-right: 10px; /* Espaciado reducido */
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        .category .scroll-category p {
-            text-align: center;
-            font-size: 12px;
-            color: #333;
-            margin-top: 5px;
-            color: white; /* Texto blanco */
-        }
-
-        /* Estilo del banner */
-        .banner {
-            margin: 0; /* Elimina cualquier margen adicional */
-            width: 100%;
-            height: 130px;
-            margin: 10px 0;
-            background-color: #f0f0f0;
-            cursor: pointer;
-        }
-
-        .banner img {
-            border-radius: 10px;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Menú de categorías con scroll horizontal debajo del banner */
-        .telegram-category {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            margin: 10px 0;
-        }
-
-        .telegram-category img {
-            border-radius: 10px;
-            width: 110px;
-            height: 170px;
-            margin-right: 10px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        /* Estilo del reproductor */
-        #videoModal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #videoModal video {
-            max-width: 80%;
-            max-height: 80%;
-            border: 2px solid white;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        /* Estilos para el modal de bienvenida */
-        #welcomeModal {
-            display: none; /* Oculto por defecto */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semi-transparente */
-            z-index: 2000; /* Por encima de otros elementos */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #welcomeModal .modal-content {
-            background-color: #1a1a1a; /* Negro sólido */
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            color: white;
-            max-width: 90%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        /* Título del modal */
-        .modal-content h2 {
-          color: white; /* Asegura que el título sea blanco */
-          text-align: center;
-        }
-
-        #welcomeModal .modal-content h2 {
             margin-bottom: 15px;
-            font-size: 24px;
         }
 
-        #welcomeModal .modal-content p {
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .featured-article img {
+            width: 100%;
+            border-radius: 12px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-content .news-category {
+            align-self: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .featured-content h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .sidebar-widget h3 {
+            font-size: 18px;
             margin-bottom: 20px;
-            font-size: 16px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        #welcomeModal .modal-content button {
-            padding: 10px 20px;
-            background-color: #ff6600; /* Color llamativo para el botón */
-            border: none;
-            border-radius: 5px;
+        .sidebar-widget h3 i {
+            color: var(--accent);
+        }
+
+        .top-cryptos {
+            list-style: none;
+        }
+
+        .crypto-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .crypto-item:last-child {
+            border-bottom: none;
+        }
+
+        .crypto-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .crypto-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .crypto-name {
+            font-weight: 600;
+        }
+
+        .crypto-symbol {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .crypto-price {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .crypto-change {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .crypto-change.up {
+            color: #00c9a7;
+        }
+
+        .crypto-change.down {
+            color: #ff4757;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--secondary);
             color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #welcomeModal .modal-content button:hover {
-            background-color: #e65c00;
-        }
-
-        /* Estilo del pie de página */
-        footer {
-            background-color: #003366; /* Azul marino */
-            color: white;
+            border-radius: 12px;
+            padding: 30px;
             text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 375px;
         }
 
-        footer p {
-            font-size: 12px; /* Letras un poco pequeñas */
-            margin: 0;
+        .newsletter h3 {
+            color: white;
+            margin-bottom: 10px;
         }
 
+        .newsletter p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #b0b7c3;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b7c3;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-banner.vertical {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .search-box {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .market-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .market-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Galería principal de portadas (scroll automático horizontal) -->
-    <div class="main-gallery" id="mainGallery">
-        <img src="https://i.ibb.co/TM3htGLs/Destino-Final-6-poster-culturageek-com-ar.webp" alt="Película 1" data-video="https://dl.dropbox.com/scl/fi/b8eshxhry7mk04waz37ht/df2025.mp4?rlkey=fxcp65qbfya4clbsz2816cama&st=yidf9fdk&dl=0">
-        <img src="https://i.ibb.co/xqwdQ9GP/download-fotor-enhance-2025071152917.jpg" alt="Película 2" data-video="https://dl.dropbox.com/scl/fi/m3ovyovuqbwxmrstuuvs7/03.mp4?rlkey=nltej1to68lqc47v289tlq6fj&st=zr1q51lq&dl=">
-        <img src="https://i.ibb.co/bgzKrY3t/Portada-Rescate.jpg" alt="Película 3" data-video="https://dl.dropbox.com/scl/fi/v55veqggm1wyqt2q630df/02.mp4?rlkey=3gy4n8fbnvn7aaerurj7a685k&st=rrc5dzpy&dl=0">
-        <img src="https://i.ibb.co/fYCYmPbD/F4378944-fotor-enhance-2025071123024.jpg" alt="Película 4" data-video="https://archive.org/download/01_20250621_20250621_2307/01.ia.mp4">
-        <img src="https://i.ibb.co/mCkdqY4N/images-fotor-enhance-2025071123509.jpg" alt="Película 5" data-video="https://archive.org/download/bailarina_202506/Bailarina.ia.mp4">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-coins"></i>
+                    <h1>Crypto<span>News</span> Pro</h1>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar noticias, criptomonedas...">
+                    </div>
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Noticias</a></li>
+                    <li><a href="#">Mercado</a></li>
+                    <li><a href="#">Análisis</a></li>
+                    <li><a href="#">Blockchain</a></li>
+                    <li><a href="#">NFTs</a></li>
+                    <li><a href="#">DeFi</a></li>
+                    <li><a href="#">Guías</a></li>
+                </ul>
+                <button class="cta-button">Suscribirse</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Publicitario Horizontal (ejemplo) -->
+    <div class="container">
+        <div class="ad-banner horizontal" id="adBanner1">
+            <!-- Espacio para banner publicitario horizontal (728x90) -->
+            <div>Espacio Publicitario (728x90)</div>
+        </div>
     </div>
 
-    <!-- Botón para unirse al canal de Telegram -->
-<div style="text-align: center; margin-top: 10px;">
-    <button style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 30px; cursor: pointer; margin-bottom: 20px;"
-            onclick="window.location.href='https://canalesdewhatsapp.serviciosonlines.com/servicios.html'">
-        👉 Venta de seguidores, canales, num virtuales y más >
-    </button>
-</div>
-
-    <!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>ESTRENOS 2️⃣0️⃣2️⃣5️⃣</h2>
-            <a href="https://estrenos.serviciosonlines.com" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://i.ibb.co/FL0DxhXB/6132ac43dacd2182b40816a72262d2a1.webp" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/xrfivchlodqri5lm0tvrj/tetera.mp4?rlkey=7k7ymzjq2rpf332fi1w46na07&st=5ent8nbp&dl=0">
-                <p>Jefes de Estado</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/0gsjXpd/download.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/hwoveua9dg5eo479iwxiz/2025.mp4?rlkey=sgvf35n762xz6j6tu40uj64vd&st=84owfr4q&dl=0">
-                <p>Until Dawn</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/Rk4Kp7tT/MV5-BZDEz-ZDcx-YTAt-N2-Yx-ZC00-OGYz-LWI3-MDkt-Nm-Ez-YWJm-Mj-Qy-NDBi-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/r89zxe9kqpjmqv45gyk3t/BFLIX13.mp4?rlkey=ae6mu3pfzq0gtzbd2tv68vh0s&st=r2xj981v&dl=0">
-                <p>Ad Vitam</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/bjCM3W7H/28-aanos-despuaes-726242872-large.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/m3ovyovuqbwxmrstuuvs7/03.mp4?rlkey=nltej1to68lqc47v289tlq6fj&st=zr1q51lq&dl=">
-                <p>28 Años Después</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/s9gFm3HT/images.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/ysjswu5ggbbndbxk6uf1r/01.mp4?rlkey=3f0lp1nfnwkpdzmca5w0zw7uc&st=clf6f3ro&dl=0">
-                <p>Elio</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/1JjWR3gv/Karate-Kid-Legends-357790616-large.jpg" alt="Acción 1" data-video="https://ia800900.us.archive.org/12/items/karate-kid-legends-2025-hdts-1080-p-lmhd-ligero/Karate_Kid_Legends_2025_HDTS_1080P_LMHD_LIGERO.ia.mp4">
-                <p>Karate Kid: Leyendas</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/0RtyJm86/MV5-BMTlm-NDRi-Zjgt-Nm-Yx-Ni00-NTc3-LWFl-Nz-Et-Nz-E0-ZGQ1-ODdl-MDQ5-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/b8eshxhry7mk04waz37ht/df2025.mp4?rlkey=fxcp65qbfya4clbsz2816cama&st=yidf9fdk&dl=0">
-                <p>Destino Final 6</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/S4xNKqq3/unnamed.jpg" alt="Acción 1" data-video="https://archive.org/download/bailarina_202506/Bailarina.ia.mp4">
-                <p>Bailarina</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/tpBfFyrY/k-V1j0-Kzb-NGPz5-EUqz-UOr-VTt-Dx2u-fotor-enhance-2025071124712.jpg" alt="Acción 1" data-video="https://archive.org/download/01_20250621_20250621_2307/01.ia.mp4">
-                <p>Agente Infiltrado</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/s9rjjT6Q/MV5-BZGQ5-NGEy-YTIt-Mj-Ni-Mi00-Y2-Ew-LTkz-OWIt-Mjc5-Yj-Ji-Mj-My-NTI0-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/vjk17j6msqze0a1ocgy65/eovkyoqxilgg.mp4?rlkey=23szy25dmqv96b4m45t7m71cn&st=mqxj59jj&dl=0">
-                <p>Misión Imposible 7</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/5Wqrj4PK/serie-tv-4030-mini.webp" alt="Acción 1" data-video="https://archive.org/download/d3vu37t4.4.747cc10n/d3vu37t4.4.747cc10n.ia.mp4">
-                <p>De vuelta a la Acción</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/G4TCzR4L/8f7d3c2532a05a50e8c26dc53de7a781-fotor-enhance-2025071133643.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/1xgbwmoppwwhoyx9fsibt/cumplea-os.mp4?rlkey=gzr5p3iboitlf1iz4zt7yaktt&st=inzijuuk&dl=0">
-                <p>Jurassic World: Renace</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/aJKuesG0qkmxKb6QrXmexz6UdDL.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/b3remxxt8la51aa7vzend/01.mp4?rlkey=ioj4sw363bw3yyqadv9i9g8qt&st=pafd5u5n&dl=0">
-                <p>Nocturnal</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/kMDUS7VmFhb2coRfVBoGLR8ADBt.jpg" alt="Acción 4" data-video="https://dl.dropbox.com/scl/fi/suhc9w3scy5h74w7aw9b2/01.mp4?rlkey=8m8j3su2a90cxhg2bhtcez6ba&st=f19bcn3l&dl=0">
-                <p>El Contador 2</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/sLDxndoqFWwJEq7iEdYQBzPjUDQ.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/vapwrmmkonfsvn49qh6kn/TR2025.mp4?rlkey=ng5o0v6ms5vk990bi681aol54&st=aexnd7n9&dl=0">
-                <p>Tierras Perdidas</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/4cR3hImKd78dSs652PAkSAyJ5Cx.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/iwlwuigiy2ur1509e0nu8/BFLIX.mp4?rlkey=7tnuzapzqxxrzhtygdqslhzup&st=410v4032&dl=0">
-                <p>Riesgo de Vuelo</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/jxeUUcoaXXwbXWHYlxmdHaip4CT.jpg" alt="Acción 7" data-video="https://archive.org/download/bflixelys-1um/BFLIX.alarum.mp4">
-                <p>Alarum: Código Letal</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/47HoQdGvW4Jy4ntUbsQ3bEnJHDh.jpg" alt="Acción 8" data-video="https://archive.org/download/01_20250621_20250621_2307/09.mp4">
-                <p>Cómo entrenar a tu dragón</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/9bhDUyOCrcwPLKbPyHM4uKOa65T.jpg" alt="Acción 9" data-video="https://archive.org/download/telematica_202505/matematicas/06.mp4">
-                <p>La fuente de la juventud</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/nJMNvYZ21bMdB2Pq0qCk88jnQc6.jpg" alt="Acción 10" data-video="https://dl.dropbox.com/scl/fi/wixgvupny4ukxmzkjcbwy/Wild-Eyed-and-Wicked.mp4?rlkey=cg4gq8natxstiu2fqcn8v42ev&dl=0">
-                <p>Wild Eyed and Wicked</p>
+    <!-- Gráficos de Mercado -->
+    <section class="market-overview">
+        <div class="container">
+            <h2>Resumen del Mercado en Tiempo Real</h2>
+            
+            <div class="market-stats">
+                <div class="stat-card up">
+                    <h3>Capitalización Total</h3>
+                    <div class="stat-value">$1.72T</div>
+                    <div class="stat-change up">+2.34% (24h)</div>
                 </div>
-                <div>
-                <img src="https://image.tmdb.org/t/p/original/4GGUlUtGA2rk3TvSulfVCpW9OzS.jpg" alt="Acción 1" data-video="https://archive.org/download/03_20250616/04.ia.mp4">
-                <p>Masameer Junior</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/7GaoXicjFxo3bMi73NvTbO7gGER.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/pqcx9m0ucrsrucgyvq3ms/mf43685.mp4?rlkey=32ubcbjwssu4g5gsxvanyzjzl&st=oxjd9fxc&dl=0">
-                <p>Mala influencia</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/rBSKGZuOZqkjrjyDlX2cx4lTaRW.jpg" alt="Acción 1" data-video="https://archive.org/download/d3vu37t4.4.747cc10n/BFLIXW4rhors31On3.ia.mp4">
-                <p>Hombre Lobo</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/3hVjnB5FE4gBrR5rqk42qiBFgGe.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/ipdg04yk85tvcirmagh8c/datos.mp4?rlkey=0to2uyj45lnpgabp324kxtc9m&st=v2b3x78t&dl=0">
-                <p>Batman Ninja vs. Yakuza League</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/y80qIpEmqFAHlqzgkbo0wOgxIyS.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/cpl1qdflx74hkbbq95kll/3st4d0.mp4?rlkey=rtd4t568a2cb9oj87z9xchl9s&st=9zng209f&dl=0">
-                <p>Estado Eléctrico</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/bx9btF0Jo4rRF68xny7VPqHNt3z.jpg" alt="Acción 1" data-video="https://archive.org/download/bflixelys-1um/BFLIXStar1Trek1Section31.mp4">
-                <p>Star Trek: Sección 31</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/u8E4aR8ghCnc1gWJTyHxXseHvpy.jpg" alt="Acción 1" data-video="https://archive.org/download/03_20250619/04.ia.mp4">
-                <p>La tragedia del festival Astroworld</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/7VqUPN0oRHfYV9hdZcal1ZzffmV.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/uvifpd4yoycki02yydl3u/BFLIX4321.mp4?rlkey=p0vd9orymevld4pwhj7pnbkca&st=4x0wlz4y&dl=0">
-                <p>No Mueras: El Hombre que Quiere Vivir Para Siempre</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/99XUkLH31ArJYf4fqGmu9pmA00u.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/r1jn43vhbb9atd7f02sq6/02.mp4?rlkey=jgtmgv6f7xz8cd4oq2vi6aa8z&st=aq57dfuj&dl=0">
-                <p>La partida de go</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/dpLNAIU8AjAxw39fZfSDt2AiwMs.jpg" alt="Acción 3" data-video="https://archive.org/download/01_20250621_20250621_2307/06.ia.mp4">
-                <p>Acto Encubierto</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/sV9vfQ6FneFt3x9FokKWAAqwWDq.jpg" alt="Acción 4" data-video="https://archive.org/download/01_20250621_20250621_2307/02.ia.mp4">
-                <p>La profecía del Guerrero</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/6eGyuK8bHMAB34AIIQOL3wZw8sn.jpg" alt="Acción 5" data-video="https://archive.org/download/la-vieja-2/La%20vieja%202.mp4">
-                <p>La vieja guardia 2</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/ibYtAs3QP1oPBJhoCpSMrLYNR82.jpg" alt="Acción 6" data-video="https://archive.org/download/asterix_202506/pbx/05.mp4">
-                <p>The Amateur</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/srj9rYrjefyWqkLc6l2xjTGeBGO.jpg" alt="Acción 7" data-video="https://archive.org/download/01_20250609/bsd/03.mp4">
-                <p>Warfare</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/wsfOvNfUGogZGfSDfMN4hCOM1kR.jpg" alt="Acción 8" data-video="https://archive.org/download/d3vu37t4.4.747cc10n/ju3g0sd3l4dr0n352.ia.mp4">
-                <p>Juego de ladrones 2: Pantera</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/pEK0Ir45l1e0QvpBTsCu0hVwTDm.jpg" alt="Acción 9" data-video="https://archive.org/download/03_20250619/02.ia.mp4">
-                <p>Blancanieves y los 7 enanitos</p>
-            </div>
-            </div>
-        </div>
-
-    <!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>MEJORES PELÍCULAS 2️⃣0️⃣2️⃣4️⃣</h2>
-            <a href="https://estrenos.serviciosonlines.com" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://i.ibb.co/JWvTZJYG/photo-4974623395484380473-y.jpg" alt="Acción 1" data-video="https://archive.org/download/estrenos-2024/Mufasa%20-%20The%20Lion%20King%20%282024%29.ia.mp4">
-                <p>Mufasa: El rey león</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/uT3jb2exALtaWrlhi8AMcBwvYph.jpg" alt="Acción 1" data-video="https://archive.org/download/estrenos-2024/Gladiador%20II%20%282024%29.mp4">
-                <p>El Gladiador 2</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/jivUhECegXI3OYtPVflWoIDtENt.jpg" alt="Acción 1" data-video="https://archive.org/download/d3vu37t4.4.747cc10n/BFLIX4Nosf3ratu1.mp4">
-                <p>Nosferatu</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/7pwu8XJCHFW5uAJSax5ycgS7q9q.jpg" alt="Acción 1" data-video="https://github.com/BrianRVP/Prueba-plugins-/releases/download/291.1.2/Mas.Alla.del.Tiempo.-.Ver.Online.en.Espanol.Latino.mp4">
-                <p>Más allá del tiempo</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/b0obWWCLRVRqRzlSK1LSGtADkLM.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/nosuqsckz90ids0zogt9c/968977548.mp4?rlkey=1ebkbg62ip0hsi2xmgpt9cc03&st=gsyfgi8k&dl=0">
-                <p>El último baile (Venom)</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/w500/e7jW5JDUsXQAgmCgNSvi0vnKqkI.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/9twgu9sfca7df414pwd98/Perspectiva.mp4?rlkey=qfa9kzbmggqvm2kxza4a5rvre&dl=0">
-                <p>Perspectiva</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/lqoMzCcZYEFK729d6qzt349fB4o.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/t4hv9pnq2wwpkcwdwb3zc/286667-371619fe-416c-45e4-ba92-183ee4fcf557-lsyg-2515191-doodstream.mp4?rlkey=rdfytnhp0iujap056zwkjy8z6&st=ve13aujn&dl=0">
-                <p>La sustancia</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/k6MgeIWontRgJJSO2tnziEnpOfW.jpg" alt="Acción 1" data-video="https://archive.org/download/heist-88/Heist%2088.mp4">
-                <p>Atraco 88</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/NYBfrtt/road.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/omir5ir4001n3xyvhhnu6/R0AD-H0US3.mp4?rlkey=dnpz2b15z29ewsak8lpz7d6z2">
-                <p>Casa de carretera (El Duro)</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/sg10wCg/IMG-20240629-213853-816.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/blleasrujanobi3om6hfu/Un-lugar-tranquilo-D-a-uno.mp4?rlkey=yu3rc2yc70c2pjwvghtvqk17o&dl=0">
-                <p>Un lugar en silencio día uno</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/pLk6bgj/LIFT.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/vxwei9jj6c990nxrd47p8/L1FT.mp4?rlkey=8rrpvrkr6pdk94qme2zleiy0a">
-                <p>Un robo de primera clase</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/nbVyKsn/1000173580.jpg" alt="Acción 1" data-video="https://dl.dropboxusercontent.com/scl/fi/29r2d21czdrjjf1myo3z0/22222.mp4?rlkey=ri90ypu3o2xlygxnb3yazgpu1&dl=0">
-                <p>Mi villano favorito 4</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/VQ5M4vq/IMG-20240626-001614-583.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/a40mw5j2zpz2z6knpvlx9/PS3MOVIE-..mp4?rlkey=flr1q2rqwrfc3vuqwelfn6ri1&dl=0">
-                <p>Furiosa: De la saga Mad Max</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/syKwepJwzvoYhPLBfUy4YYSrstr.jpg" alt="Acción 4" data-video="https://archive.org/download/mihost/mihost.mp4">
-                <p>Rescate imposible</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/22rqNtep5jWkJzB4YYYpXPxqcPH.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/3vp9optgyzw2w1wgkxy9v/in2.mp4?rlkey=ymjh76t8am55qt1ps7wmvksoz&dl=0">
-                <p>Intensamente 2</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9LjeEVkW6dZB11TbmjU3B88CE2w.jpg" alt="Acción 6" data-video="https://archive.org/download/video_2024-07-27_13-49-24/video_2024-07-27_13-49-24.mp4">
-                <p>Las profundidad del Sena</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/z6742S0/el-diario-de-noa.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/m962sll7y7yog42u3vkey/El-diario-de-Noa.mp4?rlkey=qsa7vc5tupodefed6upjs45p5&st=a7b0jq9k&dl=0">
-                <p>El diario de Noa</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/qjQX2r8PLbGNFvBUa8kVHvLRkAG.jpg" alt="Acción 8" data-video="https://archive.org/download/68388-al-borde-7434del-abismo/68388Al%20borde%207434del%20abismo.mp4">
-                <p>Al borde del abismo</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jtEZi4eZxDjxcDIeMbkQ8HmvRs1.jpg" alt="Acción 9" data-video="https://dl.dropbox.com/scl/fi/oj1rzvo4dk2viyn4d492h/1_5023877689136645260.mp4?rlkey=c7lpw43eho4gw0iqgaqzv4z1b&st=le2brsag&dl=0">
-                <p>Borderlands</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/bj4dx329/photo-4974623395484380472-y.jpg" alt="Acción 10" data-video="https://dl.dropboxusercontent.com/scl/fi/9t1ssgrlcnx8ir70ku4px/K6yn7f7u-p3ta5nd6a.mp4?rlkey=fht4c7krhd1ri66rueomazzzl&st=px3ll9ip">
-                <p>Kung Fu Panda 4</p>
+                <div class="stat-card up">
+                    <h3>Volumen (24h)</h3>
+                    <div class="stat-value">$64.52B</div>
+                    <div class="stat-change up">+5.12%</div>
                 </div>
-                <div>
-                <img src="https://image.tmdb.org/t/p/w116_and_h174_face/gAEUXC37vl1SnM7PXsHTF23I2vq.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/8ip4q79iafz7iwrgfqes5/Ver-Tarot-de-la-muerte-2024-online-HD-Cuevana.mp4?rlkey=ly2wizzn95c2gtzwugyk2ylse&dl=0">
-                <p>Tarot De La Muerte </p>
+                <div class="stat-card down">
+                    <h3>Dominancia BTC</h3>
+                    <div class="stat-value">48.32%</div>
+                    <div class="stat-change down">-0.42%</div>
+                </div>
+                <div class="stat-card up">
+                    <h3>Índice Miedo y Codicia</h3>
+                    <div class="stat-value">68/100</div>
+                    <div class="stat-change up">+4 puntos</div>
+                </div>
             </div>
-            <div>
-                <img src="https://i.ibb.co/b13NDqz/IMG-20240627-234851-154.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/phleon0mjp2x98he76vut/Rebel-Moon-Parte-Dos-La-Guerrera-que-Deja-Marcas.mp4?rlkey=ompd0rkrgqhk0jm9iv8bfhbk8&dl=0">
-                <p>Luna rebelde 2</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/Pm1Kyhh/IMG-20240626-192700-371.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/8uu2kldarmr0i5lgmbe85/Megamind2.mkv?rlkey=fni3k2hwdm9qouve5zgu7ku95">
-                <p>Megamente Vs. El sindicato de la perdicion</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/YNntv5B/mm-DEy-Yd66-Et6-Gsu-B0-Etj9if-Qw-Tr-200x300.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/d2o48osc7qb4uzweqvvp0/thecut.mp4?rlkey=mmb49j5tel5yfjsu8guh3wsg3&dl=0">
-                <p>El culto</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/WttbN23/IMG-20240627-165619-980.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/ph9i4gxc5pende3abumre/RoboPS3MOVIE.mp4?rlkey=ffmzdmfvsg075hztqbw7cprp5&dl=0">
-                <p>Robo</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/WfJzSLJ/IMG-20240626-232907-140.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/2pi0ydfrszyul2ldnrv1d/PS3MOVIE-..mp4?rlkey=uj5nuq1jwjcqqdio95cp3lev6&dl=0">
-                <p>Ultraman: El Ascenso</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/Jkr9Xvz/dqt-AOLQ8-Kq-AYo-Zck-YY9j99-NNr9-K.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/z3m5janyak5tlxhh22hjf/nunca-me-encontraras.mp4?rlkey=2gy1ozxgpoajwkb05sxfwwt0b&dl=0">
-                <p>Nunca me encontrarás</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/HgMhbkz/IMG-20240627-164716-696.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/838s120mpqjrbwjsdwxh2/Guerra-CivilPS3MOVIE.mp4?rlkey=11s7ybmue6kogi5tjl41zthj7&dl=0">
-                <p>Guerra civil</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/FnRpXhf/IMG-20240626-235729-001.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/uj24cvleix04dts5q72nx/PS3MOVIE-..mp4?rlkey=h6tyjf41xj1ndmmjqv4o2xh55&st=c5c80ygj&dl=0">
-                <p>La Casa grande</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/jf6Sq45/p0553.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/rqjvc7wtewcbf73aj0z57/P0ss3.mp4?rlkey=gqsqn5qs8haf4f1lyz7xlob01 ">
-                <p>Posesiones</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/1My9QFj/IMG-20240627-164542-274.jpg" alt="Acción 4" data-video="https://dl.dropbox.com/scl/fi/9keeedwom1hd0ygosqtax/1728x720-Contra-Todos.mp4?rlkey=vo9pjtvd0duy7y60d2rrc33kp&dl=0">
-                <p>Contra todos</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/FKgRPqt/IMG-20240627-025852-608.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/1fgmg3lsuviis7zx0r4a2/PS3MOVIE.mp4?rlkey=8roq4v9k64uh0he1wk03h1vx3&st=edvgt5tt&dl=0">
-                <p>Aprendiz de tigre</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/m5rPbNJ/IMG-20240628-162759-167.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/fcwd1fjwjrq2adodano3r/Silence-of-the-Prey.mp4?rlkey=8jmcy7qtbo67bfjtmzynn17as&st=k691nuo0&dl=0">
-                <p>El silencio de la presa</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/ynwC9Ny/IMG-20240628-095055-178.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/bsi8kvg6chb038ke0aov0/exorcismoPS3MOVIE.mp4?rlkey=4dzffsn6yj1dq6tku62oej6cd&dl=0">
-                <p>Exorcismo</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/3MNNrKb/IMG-20240627-164424-149.jpg" alt="Acción 8" data-video="https://dl.dropbox.com/scl/fi/v1pehiv3mbh1aeqcz19ul/ColateralPS3MOVIE.mp4?rlkey=jj8ozeznrmiy5n8j9v52e41xr&dl=0">
-                <p>Colateral</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/X5QccVr/IMG-20240627-135452-578.jpg" alt="Acción 9" data-video="https://dl.dropbox.com/scl/fi/joj1jnzeg9r4szrtu3607/PS3MOVIE3.mp4?rlkey=6pm05uq573moxz8bxwlmmq812&dl=0">
-                <p>Detonante</p>
-            </div>
+            
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
             </div>
         </div>
+    </section>
 
-    <!-- Banner debajo de las categorías -->
-    <div class="banner" onclick="window.open('https://wa.me//+573244760391', '_blank')">
-        <img src="https://i.ibb.co/L6dkrmR/AGENCIA-420-x-160-px-20240915-072029-0005.gif" alt="Banner promocional">
+    <!-- Contenido Principal -->
+    <div class="container">
+        <div class="main-content">
+            <div class="content-left">
+                <!-- Artículo Destacado -->
+                <article class="featured-article">
+                    <img src="https://images.unsplash.com/photo-1620336655055-bd87c5d1d73f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Blockchain Technology">
+                    <div class="featured-content">
+                        <span class="news-category">TECNOLOGÍA</span>
+                        <h2>Avances en Layer 2: Soluciones de Escalabilidad que están Revolucionando Ethereum</h2>
+                        <p>Las soluciones de capa 2 están transformando la capacidad de Ethereum para manejar transacciones, reduciendo costos y aumentando la velocidad. Analizamos las principales tecnologías y su impacto en el ecosistema.</p>
+                        <div class="news-meta">
+                            <span>Por Ana Rodríguez</span>
+                            <span>Hace 3 horas</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Banner Publicitario Medio (ejemplo) -->
+                <div class="ad-banner small" id="adBanner2">
+                    <!-- Espacio para banner publicitario medio (300x250) -->
+                    <div>Espacio Publicitario (300x250)</div>
+                </div>
+
+                <!-- Grid de Noticias -->
+                <div class="news-grid">
+                    <!-- Noticia 1 -->
+                    <article class="news-card">
+                        <img src="https://images.unsplash.com/photo-1516245834210-8a4f85e7d381?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bitcoin ETF">
+                        <div class="news-card-content">
+                            <span class="news-category">MERCADO</span>
+                            <h3>Aprobación de ETF de Bitcoin podría llegar en los próximos meses según analistas</h3>
+                            <p>Los reguladores estadounidenses están reevaluando las solicitudes de ETF de Bitcoin, con posibilidades de aprobación este año.</p>
+                            <div class="news-meta">
+                                <span>Por Carlos Méndez</span>
+                                <span>Hace 5 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 2 -->
+                    <article class="news-card">
+                        <img src="https://images.unsplash.com/photo-1620336655055-bd87c5d1d73f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="DeFi">
+                        <div class="news-card-content">
+                            <span class="news-category">DeFi</span>
+                            <h3>Protocolos DeFi superan los $50B en TVL gracias a nuevas yield strategies</h3>
+                            <p>El valor total bloqueado en finanzas descentralizadas alcanza nuevo máximo anual impulsado por innovaciones en farming.</p>
+                            <div class="news-meta">
+                                <span>Por Laura Gutiérrez</span>
+                                <span>Hace 7 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 3 -->
+                    <article class="news-card">
+                        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Regulación Cripto">
+                        <div class="news-card-content">
+                            <span class="news-category">REGULACIÓN</span>
+                            <h3>UE implementa MiCA: Nuevo marco regulatorio para criptoactivos</h3>
+                            <p>La Unión Europea avanza con su regulación integral para criptomonedas, estableciendo estándares para emisores y proveedores.</p>
+                            <div class="news-meta">
+                                <span>Por Miguel Torres</span>
+                                <span>Hace 10 horas</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Noticia 4 -->
+                    <article class="news-card">
+                        <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="NFT">
+                        <div class="news-card-content">
+                            <span class="news-category">NFT</span>
+                            <h3>Colección de NFT alcanza récord de $24M en subasta de Sotheby's</h3>
+                            <p>Una colección de arte digital tokenizada se vendió por una cifra récord, mostrando la fortaleza del mercado de NFTs de alto valor.</p>
+                            <div class="news-meta">
+                                <span>Por Sofía Ramírez</span>
+                                <span>Ayer</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Banner Publicitario Vertical (ejemplo) -->
+                <div class="ad-banner vertical" id="adBanner3">
+                    <!-- Espacio para banner publicitario vertical (300x600) -->
+                    <div>Espacio Publicitario (300x600)</div>
+                </div>
+
+                <!-- Top Cryptos -->
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-chart-line"></i> Top Criptomonedas</h3>
+                    <ul class="top-cryptos" id="cryptoList">
+                        <!-- Los datos se cargarán con JavaScript -->
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="sidebar-widget newsletter">
+                    <h3>Newsletter Crypto</h3>
+                    <p>Recibe análisis exclusivos y noticias directamente en tu correo.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico">
+                        <button class="cta-button">Suscribirse</button>
+                    </div>
+                </div>
+
+                <!-- Tendencias -->
+                <div class="sidebar-widget">
+                    <h3><i class="fas fa-fire"></i> Tendencias</h3>
+                    <div class="trending-list">
+                        <div class="trending-item">
+                            <div class="trending-tag">#BitcoinHalving</div>
+                            <div class="trending-count">2,345 posts</div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-tag">#Web3Gaming</div>
+                            <div class="trending-count">1,892 posts</div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-tag">#CBDC</div>
+                            <div class="trending-count">1,567 posts</div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-tag">#ZeroKnowledge</div>
+                            <div class="trending-count">1,234 posts</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
 
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>💣 ACCIÓN</h2>
-            <a href="https://estrenos.serviciosonlines.com" class="ver-mas">Ver más</a>
-            </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://i.ibb.co/DnF377k/MV5-BZTli-M2-Fj-MDIt-ZDBm-Yy00-ZGI2-LWJk-ZTMt-NGU5-OTNm-Mm-Q1-ZTQw-Xk-Ey-Xk-Fqc-Gc-V1.jpg" alt="Acción 1" data-video="https://archive.org/download/d3vu37t4.4.747cc10n/BFLIXThe1L4st1St4nd.mp4">
-                <p>Sniper: La Ultima Resistencia</p>
-            </div>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ01GzOAQ7NNiLuJeYMwHLmDl_GB4f9pcNunw&s" alt="Acción 1" data-video="https://archive.org/download/ds-in-the-mof-m-2022-el-newmz-k/DS%20in%20the%20MofM%202022%20El_Newmz_K.mp4">
-                <p>Dr Strange</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/Ytyyw35/Bjk8-F2h-Dzu-Oi-DRPq-K2-Gp-WUgkrwy.jpg" alt="Acción 3" data-video="https://ia600504.us.archive.org/2/items/pc-en-3l-f1n-del-mund-0s-2007-720p-lat-1-57-gb_202311/PC%20En%203l%20f%C2%B9n%20del%20mund0%27s%20%282007%29%20720p%20LAT%201%2C57%20GB.mp4">
-                <p>Piratas del Caribe</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/PwBPXqq/descarga.jpg" alt="Acción 4" data-video="https://archive.org/download/captura-de-pantalla-2023-11-02-151743/Cazadores%20de%20Hombres%20Lobo%20%282021%29.1080p.dual-lat.cinecalidad.com.mx.mp4">
-                <p>Cazadores de hombres lobos</p>
-            </div>
-            <div>
-                <img src="https://www.lahiguera.net/cinemania/pelicula/6403/mision_imposible___nacion_secreta-cartel-6344.jpg" alt="Acción 5" data-video="https://archive.org/download/captura-de-pantalla-2023-10-18-10-51-45/Mission.Impossible.7.2023.lati.mp4">
-                <p>Misión imposible 7</p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/qct5335HtktV3w1UDBYIPw2uywk.jpg" alt="Acción 6" data-video="https://archive.org/download/captura-de-pantalla-2023-10-18-10-51-45/Gran.Turismo.2023.lati.mp4">
-                <p>Gran turismo</p>
-            </div>
-            <div>
-                <img src="https://mx.web.img3.acsta.net/pictures/23/08/29/18/48/2146269.jpg" alt="Acción 7" data-video="https://archive.org/download/captura-de-pantalla-2023-10-05-025340/Contrarreloj.2023.1080P-Dual-Lat.mp4">
-                <p>Contrarreloj</p>
-            </div>
-            <div>
-                <img src="https://es.web.img3.acsta.net/pictures/23/05/25/13/41/1835431.jpg" alt="Acción 8" data-video="https://archive.org/download/captura-de-pantalla-2023-09-08-184347/Oppenheimer%20%282023%29.1080p.dual-lat.cinecalidad.com.mx.mp4">
-                <p>Oppenheimer</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/NYBfrtt/road.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/omir5ir4001n3xyvhhnu6/R0AD-H0US3.mp4?rlkey=dnpz2b15z29ewsak8lpz7d6z2">
-                <p>Casa de carretera (El Duro)</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/TBC4ftQ/CDv-XEojz0-ZNz-JRDzn-Ek-USIBVtw7.jpg" alt="Acción 9" data-video="https://ia601201.us.archive.org/21/items/blu-ee-p-4anth-3r-hd-2-16-gb/BluEe%20P4anth3r%20HD%202%2C16%20GB.mp4">
-                <p>Pantera negra</p>
-            </div>
-            <div>
-                <img src="https://m.media-amazon.com/images/S/pv-target-images/63a5f46784b3582bb572d9bd2e22b4430d2710c41735144699787bdf5153e39f.jpg" alt="Acción 10" data-video="https://ia601507.us.archive.org/23/items/uhu_20191207/fe4c2f.mp4">
-                <p>El Turista</p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <i class="fas fa-coins"></i>
+                        <h4>Crypto<span>News</span> Pro</h4>
+                    </div>
+                    <p>La fuente más confiable de noticias, análisis y datos sobre criptomonedas y blockchain.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Secciones</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Noticias</a></li>
+                        <li><a href="#">Precios</a></li>
+                        <li><a href="#">Análisis Técnico</a></li>
+                        <li><a href="#">Calendario de Eventos</a></li>
+                        <li><a href="#">Guías para Principiantes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Glosario</a></li>
+                        <li><a href="#">Calculadoras</a></li>
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Investigaciones</a></li>
+                        <li><a href="#">API para Desarrolladores</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Términos de Uso</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
+                        <li><a href="#">Descargo de Responsabilidad</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>🎁 INFANTILES</h2>
-            <a href="https://estrenos.serviciosonlines.com/" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://i.ibb.co/nbVyKsn/1000173580.jpg" alt="Acción 1" data-video="https://dl.dropboxusercontent.com/scl/fi/29r2d21czdrjjf1myo3z0/22222.mp4?rlkey=ri90ypu3o2xlygxnb3yazgpu1&dl=0">
-                <p>Mi villano favorito 4</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/0hctGtG/IMG-20240625-232809-474.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/tquzckji9bn2jsqhtt1kc/PS3MOVIE-..mp4?rlkey=aw04cv2vm5127b3d9jqyni2h3&dl=0">
-                <p>No Hay Tiempo Para Espiarme</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/D8WzYJx/IMG-20240626-020927-836.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/ncu7331o3y9jxlvkxbbuz/PS3MOVIE-..mp4?rlkey=tpusrhqxmvre4vc6w9554clha&dl=0">
-                <p>Thelma the Unicorn Telma</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/bKMn3hY/IMG-20240626-111835-410.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/o884no39ex9uhhiduf8zm/PS3MOVIE-..mp4?rlkey=w27h2wgacuzqzwmy3dwpety5e&dl=0">
-                <p>El arca de noé</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9mOEVJCKUWMxTABooY1U0FSwfi6.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/irfctff98dzh5189j3aif/La-Familia-del-Barrio-La-Pel-cula-2024-1080p-LAT-1.98-GB.mp4?rlkey=4h1q0c33epwlkdu4hys39yhnr&dl=0">
-                <p>Una familia de barrio</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/6cpb2IP2c8gEbS2E2VfLKfx04cP.jpg" alt="Acción 1" data-video="https://archive.org/download/orion-y-la-oscuridad_20240721/Ori%C3%B3n%20y%20la%20oscuridad.mp4">
-                <p>Orión y la oscuridad</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/7xNN6rs7/photo-4972337059838668348-w.jpg" alt="Acción 1" data-video="https://archive.org/download/nick-3l-0d-30n-k-1-choi-3-awards-2024/Nick3l0d30n%20K1Choi3%20Awards%202024.mp4">
-                <p>Kids' Choice Awards</p>
-            </div>
-            <div>
-                <img src="https://ia601600.us.archive.org/9/items/cutout-1677429730/Finne.jpg" alt="Acción 1" data-video="https://archive.org/download/lokng-4-n-3m-0/Lokng%204%20N3m0.mp4">
-                <p>Buscando a Nemo</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/fGNp6tG/C-mo-entrenar-a-tu-drag-n-3.jpg" alt="Acción 1" data-video="https://archive.org/download/videoplayback21_20200323/sub1d0_p4r4_5tr34ming_P5F11X/videoplayback4.mp4">
-                <p>Como entrenar..</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/1TqPG4x/Kung-Fu-Panda-3.jpg" alt="Acción 3" data-video="https://ia601503.us.archive.org/3/items/videoplayback10_20200326/sub1d0_p4r4_5tr34ming_P5F11X/videoplayback10.mp4">
-                <p>Kung Fu Panda 3</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/cutout-1677429730/era4.jpg" alt="Acción 4" data-video="https://archive.org/download/hielo-4/Hielo4.mp4">
-                <p>La Era del hielo 4</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/tQmzT64/peli-huevos-poster-1.jpg" alt="Acción 5" data-video="https://archive.org/download/534_20191230/b76.mp4">
-                <p>Pelicula de huevos</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/tsNW0ZS/D9w-Hkw-F9ttn-NKu-Oo-EIStve32j-Ek.jpg" alt="Acción 6" data-video="https://ia601604.us.archive.org/30/items/lo-simpson-pel-1cul-4-hd-720p-972715/LoSimpsonPel1cul4_HD__720p___972715.mp4">
-                <p>Los Simpson</p>
-            </div>
-            <div>
-                <img src="https://www.lavanguardia.com/peliculas-series/images/movie/poster/2000/4/w1280/sNE3FV3TDC2Z22uNHZipGEbKHdY.jpg" alt="Acción 7" data-video="https://ia601600.us.archive.org/26/items/los-picarock-hd-720p-840192/LosPicarock_HD__720p___840192.mp4">
-                <p>Los Picapiedras</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/P1J0bzZ/mario.jpg" alt="Acción 8" data-video="https://dl.dropbox.com/s/h74kmjrld88f96u/M4R10FULL.mp4">
-                <p>Súper Mario</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/ZMgN2Hs/Scooby-Doo-Lucha.jpg" alt="Acción 9" data-video="https://archive.org/download/830202008/8302020/8302020-08.mp4">
-                <p>Scooby Doo Lucha</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/42YGmXY/sahara.jpg" alt="Acción 10" data-video="https://dl.dropboxusercontent.com/s/0x82vdb9wd0k9fq/250392.mp4">
-                <p>Sahara</p>
-                </div>
+            <div class="copyright">
+                <p>&copy; 2023 CryptoNews Pro. Todos los derechos reservados. La información proporcionada no constituye asesoramiento financiero.</p>
             </div>
         </div>
+    </footer>
 
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>❤ ROMÁNTICAS</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/VMOt5scbGmBKDvkfHjZN6Ki54i.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/osyw6fgbiiwzjkx0bv9oy/Titanic.mp4?rlkey=b07hibjgt20txijg0citjdshs&dl=0">
-                <p>Titanic</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/6OD0yBusMHXSQDdVFSrTlcFc3PO.jpg" alt="Acción 1" data-video="https://archive.org/download/video_2024-07-26_23-08-52/video_2024-07-26_23-08-52.mp4">
-                <p>Maravilloso desastre</p>
-            </div>
-            <div>
-                <img src="https://dl.dropbox.com/scl/fi/z0bntvcmhifnrxckaxs1s/IMG_20240706_151131_415.jpg?rlkey=aqf25wzi5sfyw6gdhqisgo0o2&dl=0" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/s4pn2wx1tzgdte10bws0k/1_4918103072816759961.mp4?rlkey=u07tzh8jzuuegl2vvtcpnyaan&dl=0">
-                <p>Goyo</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/jfLy0xW/Ck-Kme-Ih1yo4-AMv-NUsa2-E6-NGp-Bgj.jpg" alt="Acción 3" data-video="https://archive.org/download/3xpl-0c-1v-4-2-2001-hd-2-96-gb/10%20C0s4%24%201080p%20LAT%202%2C84%20GB.mp4">
-                <p>10 Cosas que Odio de Ti </p>
-            </div>
-            <div>
-                <img src="https://image.tmdb.org/t/p/original/5umEGkCrshN1JDywCbWZRvkdmry.jpg" alt="Acción 4" data-video="https://archive.org/download/s-0lt-3r-0-3n-c-4s-4/s0lt3r0%203n%20c4s4.mp4">
-                <p>Novia por contrato</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/qjQX2r8PLbGNFvBUa8kVHvLRkAG.jpg" alt="Acción 1" data-video="https://archive.org/download/68388-al-borde-7434del-abismo/68388Al%20borde%207434del%20abismo.mp4?rlkey=8rrpvrkr6pdk94qme2zleiy0a">
-                <p>Al borde del abismo</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/wzRK94H/a-family-affair-639912317-large.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/j8esxme8h5lqpbicaks4c/4sunt0f4m1l14r.mp4?rlkey=v8y4ftrlfx8qrh4qlovxopcr7&st=smko9znp&dl=0">
-                <p>Asunto familiar</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/z6742S0/el-diario-de-noa.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/m962sll7y7yog42u3vkey/El-diario-de-Noa.mp4?rlkey=qsa7vc5tupodefed6upjs45p5&st=a7b0jq9k&dl=0">
-                <p>El diario de Noa</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/0024658/0024658.jpg" alt="Acción 8" data-video="https://archive.org/download/casate-conmigo/casate%20conmigo.mp4">
-                <p>Cásate conmigo</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/arrancame-la-vida/arrancame-la-vida.jpeg" alt="Acción 9" data-video="https://archive.org/download/arrancame-la-vida-720p-lat-1.92-gb/Arrancame%20La%20Vida%20720p%20LAT%201.92%20GB.ia.mp4">
-                <p>Arrancame La Vida</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/c4xJfkXYVXxzmTURwQzmYZd3c3w.jpg" alt="Acción 10" data-video="https://dl.dropbox.com/scl/fi/krbnd8qquw7l0t5qbf2l3/Los-peque-os-amores.mp4?rlkey=ymv9zr128ds7ksjp4lcnuruzu&dl=0">
-                <p>Los pequeños amores</p>
-                </div>
-            </div>
-        </div>
+    <script>
+        // Datos de ejemplo para criptomonedas
+        const cryptoData = [
+            { name: "Bitcoin", symbol: "BTC", price: "$42,850.32", change: "+2.34%", changeType: "up" },
+            { name: "Ethereum", symbol: "ETH", price: "$2,280.15", change: "+1.87%", changeType: "up" },
+            { name: "Cardano", symbol: "ADA", price: "$0.52", change: "+5.12%", changeType: "up" },
+            { name: "Solana", symbol: "SOL", price: "$98.74", change: "-1.23%", changeType: "down" },
+            { name: "Polkadot", symbol: "DOT", price: "$7.15", change: "+3.45%", changeType: "up" },
+            { name: "Dogecoin", symbol: "DOGE", price: "$0.079", change: "-0.56%", changeType: "down" },
+            { name: "Polygon", symbol: "MATIC", price: "$0.85", change: "+4.21%", changeType: "up" },
+            { name: "Avalanche", symbol: "AVAX", price: "$21.43", change: "+2.89%", changeType: "up" }
+        ];
 
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>👿 TERROR</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://i.ibb.co/2MSvDYn/TALK.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/tfudbvzuvm62umij54aut/T4LKT0M3.mp4?rlkey=cwly1qsak4zins8rtsqd99wzn">
-                <p>Háblame</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/df-5_20210525/ACCE%202/DF5.png" alt="Acción 1" data-video="https://archive.org/download/df-5_20210525/ACCE%202/DF5.mp4">
-                <p>Destino final 5</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/Mh6CDLz/nun2.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/kmnntpc3ge31tk2nrlsko/m0nj4-2.mp4?rlkey=zu617etf1rgk7ruxlse72usa8">
-                <p>La Monja 2</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/f8MhtxP/evil.jpg" alt="Acción 4" data-video="https://dl.dropbox.com/s/a8nzs31svdlt9md/3v1ld3ad.mp4">
-                <p>Residencia diabólica</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/dmH3kF1/culto.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/s/69h9lixdws23u0r/7.mp4">
-                <p>El culto de Chucky</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/bdPgvzK/m4lign.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/uhph4yon9kx6hmcceb0nx/M4L1GN0.mp4?rlkey=u2h7cckpe906gem9kzu3vdo5j">
-                <p>Malignant</p>
-            </div>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1eyNwOn0_UUl3xgLbm23uBPZyDx5IeFLjjg&s" alt="Acción 7" data-video="https://archive.org/download/the-king-of-fighters-2002-magic-plus-ll/The.Covenant.2023.DVDRip-Lat.mp4">
-                <p>Demonio negro</p>
-            </div>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk1E39U6GAyr-dQsewWq8_SPadB_5CfUR-4w&s" alt="Acción 8" data-video="https://dl.dropbox.com/s/goo9g8kd45lakak/4M1TIVILL3%203L%20D3SP3RT4R.mp4">
-                <p>Terror en Amityville</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/NKG80cM/hall2018.jpg" alt="Acción 9" data-video="https://dl.dropbox.com/s/7j869lk56pbcst8/11.mp4">
-                <p>Halloween</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/bWT9Ygp/todas-lunas.jpg" alt="Acción 10" data-video="https://archive.org/download/carros_20211013/T0d4s%20l4s%20lun4s.mp4">
-                <p>Todas las Lunas</p>
-                </div>
-            </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>🍿 DRAMAS - SUSPENSO</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKzetHubVY4OQTypbGfL_965ErMTSqgFbUhQ&s" alt="Acción 1" data-video="https://ia801407.us.archive.org/16/items/lat-720-b.-3.4.-u.-t.-y-4.-n.-d-t.-h.-3-b.-3.4.-s.-t/LAT-720%20B.3.4.U.T.Y_4.N.D_T.H.3_B.3.4.S.T.mp4?rlkey=cwly1qsak4zins8rtsqd99wzn">
-                <p>La Bella y La Bestia</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/0jL7dj3/HHlotp-AAwbk7-Mz-X5-OEcm-Usw-OKKJ.jpg" alt="Acción 1" data-video="https://ia903405.us.archive.org/6/items/peliculaSELENA/selena.mp4">
-                <p>Selena</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/k2yDsg4/BENEDICIOS.jpg" alt="Acción 1" data-video="https://ia601604.us.archive.org/16/items/amoscombenfic1/amoscombenfic%281%29.mp4">
-                <p>Amigos con beneficios</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/j3MK4Wv/vegas.jpg" alt="Acción 3" data-video="https://ia601603.us.archive.org/4/items/l-4s-veg-5s-hd-720p-1060814/L4s_Veg5s_HD__720p___1060814.mp4">
-                <p>Algo pasa en las Vegas</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/fr4nV5g/bailamos.jpg" alt="Acción 4" data-video="https://ia904700.us.archive.org/32/items/ba-1l-4m-0osz-3692581d-dvd/Ba1l4m0osz3692581dDvd.mp4">
-                <p>Bailamos</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/P9LXZpr/01.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/s/l1l2ietud29v27x/10.Things.Before.We.Break.Up.mp4">
-                <p>Antes de que rompamos</p>
-            </div>
-            <div>
-                <img src="https://clarovideocdn7.clarovideo.net/PELICULAS/500DAYSOFSUMMER/EXPORTACION_WEB/SS/500DAYSOFSUMMERWVERTICAL.jpg?size=200x300" alt="Acción 6" data-video="https://archive.org/download/500-dias-con-ella/500%20d%C3%ADas%20con%20ella.mp4">
-                <p>500 días con ella</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/3_20201017_20201017_1926/Today/1.1.png" alt="Acción 7" data-video="https://archive.org/download/3_20201017_20201017_1926/Today/1.mp4">
-                <p>El Diablo viste a la moda</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/zNtXBHm/06.jpg" alt="Acción 8" data-video="https://dl.dropbox.com/s/7k9d4hqnpqj0k0l/LNC2.mp4">
-                <p>La nueva Cenicienta 2</p>
-            </div>
-            <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxAPOKDXUHu9YBOvl-Kwid31VXEiADuVftjA&s" alt="Acción 9" data-video="https://ia601503.us.archive.org/24/items/012547489541643/0125474_89541643.mp4">
-                <p>Como si fuera la 1ra vez</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/MNnfFhk/paper-towns-57e8099e85477.jpg" alt="Acción 10" data-video="https://archive.org/download/132375009/Ciudades_de_Papel_HD__1080p___970104.mp4">
-                <p>Ciudades de papel</p>
-                </div>
-            </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>✅ ESTUDIO MARVEL</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/i5eSA5DK5iAv53SB4yv57bN56o6.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/v2usezfj93kp0pqajqo69/Capit-n-Am-rica-el-primer-vengador.mp4?rlkey=iv8j1bumvv75dgjkbniccf69r&st=v03t5wy3&dl=0">
-                <p>Capitan américa: Primer vengador</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/5SPa7dZ85p54xa7E9tHRmfKq5ce.jpg" alt="Acción 2" data-video="https://dl.dropbox.com/s/qnnirswyiybs14k/CapMarvel.mp4">
-                <p>Capitana marvel </p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/qFAVW4XJaxhj7PcpiUI5hhO9bOX.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/o746q0aa8babyt3otegai/iron-man-1.mp4?rlkey=1kf75c5x31qzqd94s2jvk8gac&st=xaaujqx3&dl=0">
-                <p>Thor</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/04LCCfc/photo-4974623395484380469-m.jpg" alt="Acción 4" data-video="https://dl.dropbox.com/scl/fi/1mmzq9w8pt472bgbu4zsf/the-avengers.mp4?rlkey=tjwdp586tvo7rutp7wooj1lsh&st=f9cy34px&dl=0">
-                <p>Avengers</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cW0fOIZONkgeiMJDYzqUcgl4MUn.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/shvc93gv0cwnu1teokm1e/iron-man-3.mp4?rlkey=1otvn9gf0mtqot1kb31ihdalr&st=lbpa03zq&dl=0">
-                <p>Iron man 3 </p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/LD7ssKpY/photo-4974623395484380470-y.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/k36t6jxpb9ilis0ihliyp/era-de-ultron.mp4?rlkey=aercd1gc2msnlnmvxg4kw5w30&st=ejn38xa1&dl=0">
-                <p>The Avegers 2: Era de Ultron</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/7dhLvGvw/photo-4974623395484380471-x.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/nx47yd4k4soizpqux19ft/ant-man-1.mp4?rlkey=5ub6dzlq8hvl7icopr11sgrhb&st=3guwfu55&dl=0">
-                <p>Ant-Man: El hombre hormiga</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/mYpT2R7639KvKZ668uoQGS2QNFp.jpg" alt="Acción 8" data-video="https://dl.dropbox.com/scl/fi/kt7sonbsup5cfiahb0p8h/Black-Panther-Wakanda-Forever.mp4?rlkey=600mybqcc7sfwdvpgmydblawh&st=75c58qln&dl=0">
-                <p>Pantera negra: Wakanda por siempre</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9VZO30aIAhQoiiP3qsRd5jd7UvQ.jpg" alt="Acción 9" data-video="https://dl.dropbox.com/scl/fi/rp0qfsb7972904nn77lpi/doc.mp4?rlkey=aw5nu60vzu02562ol3jglh8fk&dl=0">
-                <p>Dr Strange en el multiverso de la locura</p>
-                </div>
-            </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>☢ CÓMIC DC</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/imekS7f1OuHyUP2LAiTEM0zBzUz.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/vsxfmexs0gohrrg7d90ks/la-mujer-maravilla-1.mp4?rlkey=3hgisdmasp01iozaio3kh34on&st=ep4kn5qg&dl=0">
-                <p>Mujer Maravilla</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/dksTL9NXc3GqPBRHYHcy1aIwjS.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/wfx53gr405evoisi2paek/El-hombre-de-acero.mp4?rlkey=7a2s95kawseuy8huz35ed2zj6&st=3fwwra8g&dl=0">
-                <p>Superman</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/eifGNCSDuxJeS1loAXil5bIGgvC.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/396wn1jueho3p39ek8bxl/liga-de-la-justicia.mp4?rlkey=chtsh5e64db0vhy0u28i7tni1&st=f485vj4k&dl=0">
-                <p>La liga de la justicia</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/zdw7Wf97vsQ0YnGomxDqfcEdUjX.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/6rholjv3owh722tw09yo2/aquaman1.mp4?rlkey=1tsvat2botp3mkd9owi3w7no7&st=awhwr2dx&dl=0">
-                <p>Aquaman</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/xnopI5Xtky18MPhK40cZAGAOVeV.jpg" alt="Acción 4" data-videohttps://dl.dropbox.com/scl/fi/4wpqnippjks7unjxn12s7/Shazam.mp4?rlkey=fjcb6jx07c429y801xek5k3ed&st=0vxthy3g&dl=0">
-                <p>¡Shazam!</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/xFw9RXKZDvevAGocgBK0zteto4U.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/7mhtl62re4j98x5om28rk/escuadron-suicida-2.mp4?rlkey=ubnvrab2mrxqcarmm71dckulc&st=fgp7rrwr&dl=0">
-                <p>El escuadrón suicida 2</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/fimqwk7m5kcc7d4k3l0yv/Black-Adam.mp4?rlkey=5r2w0p6nxugomdpnsvb9iaw5c&st=qv03ify2&dl=0">
-                <p>Black Adam</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/5nybutjl4ydvupezd7tu5/Shazam-La-furia-de-los-dioses.mp4?rlkey=md8ys5p0nkjtjhlxxw3uguqa7&st=faqq3iwb&dl=0">
-                <p>Shazam la furia de los dioses</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/mcRVsjMbhFstRK9z2oGRHiIvulr.jpg" alt="Acción 8" data-video="https://dl.dropbox.com/scl/fi/hmajcnam227alexpmspl9/1_4967970078369776417.mp4?rlkey=wn0gjbodlurch2bhywvwfoqgl&st=92hwcxv3&dl=0">
-                <p>Crisis en tierras infinitas</p>
-                </div>
-            </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>👽 CIENCIA FICCIÓN</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/e7jW5JDUsXQAgmCgNSvi0vnKqkI.jpg" alt="Acción 5" data-video="https://dl.dropbox.com/scl/fi/9twgu9sfca7df414pwd98/Perspectiva.mp4?rlkey=qfa9kzbmggqvm2kxza4a5rvre&dl=0">
-                <p>Perspectiva</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/cesSnuafCLbReG5TcUh5dpIxchP.jpg" alt="Acción 1" data-video="https://archive.org/download/erwrerrr3eplica4345frj548934s/erwrerrR3%C3%A9plica4345frj548934s.mp4">
-                <p>Réplicas</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/jtEZi4eZxDjxcDIeMbkQ8HmvRs1.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/oj1rzvo4dk2viyn4d492h/1_5023877689136645260.mp4?rlkey=c7lpw43eho4gw0iqgaqzv4z1b&st=le2brsag&dl=0">
-                <p>Borderlands</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/t4xb2r36SR2sbUtOsPXdZ3lCmcJ.jpg" alt="Acción 4" data-video="https://dl.dropbox.com/scl/fi/qexczcwpq4umgnn2p87hl/Poder-sin-limites-2012-espa-ol-latino-SD.mp4?rlkey=tzgyub5iqjwenusbw6wkb51es&st=zkr2dwlg&dl=0">
-                <p>Poder sin limites</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/5HHOAXZxUmJ1q3ayKIubEp9PGwR.jpg" alt="Acción 1" data-video="https://dl.dropboxusercontent.com/s/jrn5kyiy4dq4cym/Proyecto-Almanac.mp4?fbclid=IwAR1yIgH00ozsmax04dEEKAji8YWdcDJrFrVT5lq26CU_E6yTftl80JjKpak">
-                <p>Proyecto almanaque</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/VQ5M4vq/IMG-20240626-001614-583.jpg" alt="Acción 6" data-video="https://dl.dropbox.com/scl/fi/a40mw5j2zpz2z6knpvlx9/PS3MOVIE-..mp4?rlkey=flr1q2rqwrfc3vuqwelfn6ri1&dl=0">
-                <p>Furiosa: De la saga Mad Max</p>
-            </div>
-            <div>
-                <img src="https://archive.org/download/mv-5-bnd/MV5BNDNmYTQzMDEtMmY0MS00OTNjLTk4MjItMDZhMzkzOGI3MzA0XkEyXkFqcGdeQXVyNjk5NDA3OTk%40.jpg" alt="Acción 7" data-video="https://dl.dropbox.com/scl/fi/mu8svchh6arjjfa334p7p/PS3MOVIE-..mp4?rlkey=orey9cejkzs23o72pw31tl2pz&dl=0">
-                <p>El planeta de los simios: La guerra</p>
-            </div>
-            <div>
-                <img src="https://dl.dropbox.com/scl/fi/i9o563p6442dlzhsn9eaq/20070936.jpg?rlkey=fng58xwd0lsr0yr24vsp9in80&dl=0" alt="Acción 8" data-video="https://archive.org/download/alien-vs-predator-2004-hd-1-62-gb/Alien%20vs%20Predator%20%282004%29%20HD%201%2C62%20GB.mp4">
-                <p>Alien vs depredador</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9LVocsQ2Pnc0RaKNhUhGvEs8ekM.jpg" alt="Acción 9" data-video="https://dl.dropbox.com/scl/fi/ssi6rfsrcysreqyc9a9b1/rey5_4936199977647997179.mp4?rlkey=5w7srwc2m58ztv8e6j097zef3&dl=0">
-                <p>El rey escorpion 5</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/fvvD6QR/9-Orn6q-HO5z-XL6-Fc-Om-HKd1tcm7-CK.jpg" alt="Acción 10" data-video="https://archive.org/download/3xpl-0c-1v-4-2-2001-hd-2-96-gb/1luc10n1%24t4s%202%201080p%20LAT%201.27%20GB.mp4">
-                <p>Los Ilusionistas 2</p>
-                </div>
-            </div>
-        </div>
-
-<!-- Categorías de películas con scroll horizontal -->
-    <div class="category">
-        <div class="category-header">
-            <h2>🤣 COMEDIAS</h2>
-            <a href="pagina-mas-terror.html" class="ver-mas">Ver más</a>
-        </div>
-        <div class="scroll-category">
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/9QusyGRq3X8zmbrqGM1ynGuPFB5.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/uj0ta097dwrl5qc9seic8/El-precio-de-la-novia.mp4?rlkey=7qn04bwv6ogm0eb0xv9micorj&dl=0">
-                <p>El precio de la novia</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/d6mQAufyjfqGhRcvqTKAmUV6QRo.jpg" alt="Acción 1" data-video="https://dl.dropbox.com/scl/fi/8988y8hmdog4vt4l2d6zx/Solo-una-noche-de-juegos.mp4?rlkey=6vet9zch5m8xnue5jth8wfdhj&dl=0">
-                <p>Solo una noche de juegos</p>
-            </div>
-            <div>
-                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/ghlwOez45gndnAp3aPMzg5kxMjp.jpg" alt="Acción 3" data-video="https://dl.dropbox.com/scl/fi/14dz3i9nn0bju6dxu3udm/Grandes-Esp-as-Misi-n-Italia.mp4?rlkey=shv3u3te613a9sheo95u51epu&dl=0">
-                <p>juego de espias</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/qsbByQP/CUERPO.jpg" alt="Acción 4" data-video="https://ia601600.us.archive.org/1/items/est-3-cuer-o-no-es-el-m-o-dvdrip-797213/Est3_cuer_o_no_es_el_m_o_DVDRip__797213.mp4">
-                <p>Este cuerpo no es mío</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/6Jy5mS5/3-ZHGOM5s-U6-Po-X2iz6-Hle-LTw-Xs6p.jpg" alt="Acción 5" data-video="https://ia600503.us.archive.org/9/items/0n-4-n-1th-3che-1080p-3-49-gb/0n4%20N1th3che%201080p%203%2C49%20GB.mp4">
-                <p>Novio por una noche</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/T18ZZGd/unnamed.jpg" alt="Acción 6" data-video="https://ia803106.us.archive.org/20/items/son-como-ninos_202107/Son%20como%20ni%C3%B1os.mp4">
-                <p>Son como niños</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/xM1sdyb/6s-ZCa-E0-Bf6-DYZRd-QYDl02-NQ5-Dn6.jpg" alt="Acción 7" data-video="https://ia903209.us.archive.org/22/items/la-pas-1i-0on-d-3-cr-1i-5to-2004-1080p-4-33-gb/Crue3ll4a%20%282021%29%20720p%20LAT%201.09%20GB.mp4">
-                <p>Cruela</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/pv1rP8s/JY4-NIAb-Xa-Gm77re43-Bs-XRvut-EFP.jpg" alt="Acción 8" data-video="https://archive.org/download/la-pas-1i-0on-d-3-cr-1i-5to-2004-1080p-4-33-gb/CkOP4pas%202%20%282017%29%201080p%203%2C68%20GB.mp4">
-                <p>Guerras de papás</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/wZtXSRg/BCBNJk5s-Cueo8r-Lr5-MZgm-C1-C5x.jpg" alt="Acción 9" data-video="https://ia601204.us.archive.org/32/items/qpa-1-2009-hd-705-99-mb/QPA%201%202009%20HD%20705%2C99%20MB.mp4">
-                <p>Qué pasó ayer</p>
-            </div>
-            <div>
-                <img src="https://i.ibb.co/YdSysvM/L06j-Mu0-V4cp1-Du-Qd-I9pt-SJj-V01q.jpg" alt="Acción 10" data-video="https://ia803209.us.archive.org/22/items/la-pas-1i-0on-d-3-cr-1i-5to-2004-1080p-4-33-gb/Cl1ckE4%202006%20-%20Adam%20Sandler%20HD%201%2C65%20GB.mp4">
-                <p>Click</p>
-                </div>
-            </div>
-        </div>
-<!-- Pie de página -->
-<footer>
-    <p>© Todos los derechos reservados 2024.</p>
-</footer>
-
-
-    <!-- Modal de video -->
-    <div id="videoModal">
-        <span class="close-btn" onclick="closeVideoModal()">×</span>
-        <video controls></video>
-    </div>
-
-    <div id="lock-screen">
-    <p>Ingresa el PIN para ver miles de películas:</p>
-    <p>El PIN lo puedes comprar en una suscripción:</p>
-    <button id="whatsapp-btn" 
-        style="border-radius: 20px; background-color: #25D366; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; margin-bottom: 10px;">
-        Ir a Comprar
-    </button> 
-    <input type="password" id="pin-input" placeholder="PIN">
-    <button id="unlock-btn">Desbloquear</button>
-    <p id="error-message" style="color: red; display: none;">PIN incorrecto. Inténtalo nuevamente.</p>
-</div>
-
-<script>
-    document.getElementById("whatsapp-btn").addEventListener("click", function() {
-        window.location.href = "https://t.me/TheTeacherdeCursos"; // Reemplaza con el enlace de tu canal
-    });
-</script>
-
-    <script>    
-    const PIN = "1815"; // PIN requerido
-    const lockScreen = document.getElementById("lock-screen");
-    const pinInput = document.getElementById("pin-input");
-    const unlockBtn = document.getElementById("unlock-btn");
-    const errorMessage = document.getElementById("error-message");
-
-    // Función para bloquear la pantalla
-    function lockPage() {
-      setTimeout(function() {
-        lockScreen.style.display = "flex";
-      }, 0000); // Esperar 1s (1000 ms)
-    }
-
-    // Función para desbloquear la pantalla
-    function unlockPage() {
-      const userPin = pinInput.value;
-      if (userPin === PIN) {
-        lockScreen.style.display = "none";
-        errorMessage.style.display = "none";
-        localStorage.setItem("lastUnlock", Date.now());
-      } else {
-        errorMessage.style.display = "block";
-      }
-    }
-
-    // Evento de desbloqueo
-    unlockBtn.addEventListener("click", unlockPage);
-
-    // Verificar si han pasado 24 horas
-    function shouldLock() {
-      const lastUnlock = localStorage.getItem("lastUnlock");
-      if (!lastUnlock) {
-        return true;
-      }
-      const elapsedTime = Date.now() - parseInt(lastUnlock, 10);
-      return elapsedTime >= 15 * 60 * 1000; // 24 horas en milisegundos
-    }
-
-    // Bloquear la pantalla si corresponde
-    if (shouldLock()) {
-      lockPage();
-    }
-
-        // Scroll automático en galería principal (cambia entre portadas)
-        const mainGallery = document.getElementById('mainGallery');
-        const images = mainGallery.querySelectorAll('img');
-        let currentImageIndex = 0;
-
-        function showNextImage() {
-            currentImageIndex++;
-
-            if (currentImageIndex >= images.length) {
-                currentImageIndex = 0; // Reiniciar a la primera imagen cuando llegue a la última
-            }
-
-            // Mostrar la imagen actual
-            mainGallery.scrollTo({
-                left: images[currentImageIndex].offsetLeft,
-                behavior: 'smooth'
+        // Función para cargar la lista de criptomonedas
+        function loadCryptoList() {
+            const cryptoList = document.getElementById('cryptoList');
+            cryptoList.innerHTML = '';
+            
+            cryptoData.forEach(crypto => {
+                const cryptoItem = document.createElement('li');
+                cryptoItem.className = 'crypto-item';
+                
+                cryptoItem.innerHTML = `
+                    <div class="crypto-info">
+                        <div class="crypto-icon">${crypto.symbol.charAt(0)}</div>
+                        <div>
+                            <div class="crypto-name">${crypto.name}</div>
+                            <div class="crypto-symbol">${crypto.symbol}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="crypto-price">${crypto.price}</div>
+                        <div class="crypto-change ${crypto.changeType}">${crypto.change}</div>
+                    </div>
+                `;
+                
+                cryptoList.appendChild(cryptoItem);
             });
         }
 
-        // Cambiar de imagen cada 2 segundos
-        setInterval(showNextImage, 2000);
-        // Reproductor de video
-        const videoModal = document.getElementById('videoModal');
-        const videoElement = videoModal.querySelector('video');
+        // Función para inicializar el gráfico
+        function initMarketChart() {
+            const ctx = document.getElementById('marketChart').getContext('2d');
+            
+            // Datos de ejemplo para el gráfico
+            const data = {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                datasets: [
+                    {
+                        label: 'Bitcoin (BTC)',
+                        data: [29000, 32000, 41000, 38500, 42000, 45000, 44000, 43000, 42500, 42800, 43500, 42850],
+                        borderColor: '#f7931a',
+                        backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Ethereum (ETH)',
+                        data: [1800, 1950, 2200, 2100, 2250, 2300, 2280, 2250, 2260, 2270, 2290, 2280],
+                        borderColor: '#627eea',
+                        backgroundColor: 'rgba(98, 126, 234, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            };
+            
+            // Configuración del gráfico
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'nearest'
+                    }
+                }
+            };
+            
+            // Crear el gráfico
+            new Chart(ctx, config);
+        }
 
-        document.querySelectorAll('.main-gallery img, .scroll-category img').forEach(img => {
-            img.addEventListener('click', function () {
-                videoElement.src = this.dataset.video;
-                videoModal.style.display = 'flex';
-                videoElement.play();
+        // Toggle del tema oscuro/claro
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+            const icon = this.querySelector('i');
+            
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                
+                // Cambiar variables para tema oscuro
+                document.documentElement.style.setProperty('--dark', '#f8f9fa');
+                document.documentElement.style.setProperty('--light', '#121826');
+                document.documentElement.style.setProperty('--card-bg', '#1e293b');
+                document.documentElement.style.setProperty('--header-bg', '#1e293b');
+                document.documentElement.style.setProperty('--border', '#334155');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                
+                // Restaurar variables para tema claro
+                document.documentElement.style.setProperty('--dark', '#121826');
+                document.documentElement.style.setProperty('--light', '#f8f9fa');
+                document.documentElement.style.setProperty('--card-bg', '#ffffff');
+                document.documentElement.style.setProperty('--header-bg', '#ffffff');
+                document.documentElement.style.setProperty('--border', '#e0e0e0');
+            }
+        });
+
+        // Simular actualización de datos en tiempo real
+        function updateMarketData() {
+            // Simular cambios en los precios
+            const statValues = document.querySelectorAll('.stat-value');
+            const cryptoChanges = document.querySelectorAll('.crypto-change');
+            
+            // Actualizar estadísticas del mercado
+            statValues.forEach(stat => {
+                const currentValue = parseFloat(stat.textContent.replace(/[^0-9.-]+/g, ""));
+                const change = (Math.random() - 0.5) * 0.1;
+                const newValue = currentValue * (1 + change);
+                
+                // Formatear según el tipo de dato
+                if (stat.textContent.includes('$')) {
+                    stat.textContent = '$' + newValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                } else if (stat.textContent.includes('%')) {
+                    stat.textContent = newValue.toFixed(2) + '%';
+                } else {
+                    stat.textContent = newValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                }
+            });
+            
+            // Actualizar cambios en criptomonedas
+            cryptoChanges.forEach(changeElement => {
+                const isPositive = Math.random() > 0.5;
+                const changePercent = (Math.random() * 3).toFixed(2);
+                
+                if (isPositive) {
+                    changeElement.textContent = '+' + changePercent + '%';
+                    changeElement.className = 'crypto-change up';
+                } else {
+                    changeElement.textContent = '-' + changePercent + '%';
+                    changeElement.className = 'crypto-change down';
+                }
+            });
+        }
+
+        // Inicializar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCryptoList();
+            initMarketChart();
+            
+            // Actualizar datos cada 10 segundos (simulación)
+            setInterval(updateMarketData, 10000);
+            
+            // Simular clics en banners publicitarios
+            const adBanners = document.querySelectorAll('.ad-banner');
+            adBanners.forEach(banner => {
+                banner.addEventListener('click', function() {
+                    // En una implementación real, esto redirigiría al anunciante
+                    console.log('Clic en espacio publicitario');
+                });
             });
         });
-
-        function closeVideoModal() {
-            videoModal.style.display = 'none';
-            videoElement.pause();
-            videoElement.src = '';
-        }
-
-    // Botón de compartir en WhatsApp
-        document.querySelector('.whatsapp-icon').addEventListener('click', function() {
-            const shareUrl = 'https://serviciosonlines.com'; // Cambia este enlace a tu enlace de compartir
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareUrl)}`;
-            window.open(whatsappUrl, '_blank');
-        });
-
-        // Acción al hacer clic en el nuevo icono
-        document.querySelector('.new-icon').addEventListener('click', function() {
-            window.open('https://t.me/TheTVContentS3/329?single', '_blank'); // Cambia 'https://tu-nuevo-sitio.com' por el enlace que desees
-         });
-
-        // Funcionalidad del modal de bienvenida
-        const welcomeModal = document.getElementById('welcomeModal');
-        const acceptBtn = document.getElementById('acceptBtn');
-
-        // Función para mostrar el modal
-        function showWelcomeModal() {
-            welcomeModal.style.display = 'flex';
-        }
-
-        // Función para ocultar el modal y guardar la hora actual
-        function hideWelcomeModal() {
-            welcomeModal.style.display = 'none';
-            const now = new Date().getTime();
-            localStorage.setItem('welcomeModalLastShown', now);
-        }
-
-        // Verificar si el modal debe mostrarse
-        function checkModalDisplay() {
-            const lastShown = localStorage.getItem('welcomeModalLastShown');
-            const now = new Date().getTime();
-            const twentyFourHours = 24 * 60 * 60 * 1000; // Milisegundos en 24 horas
-
-            if (!lastShown || (now - lastShown) > twentyFourHours) {
-                showWelcomeModal();
-            }
-        }
-
-        // Evento para el botón aceptar
-        acceptBtn.addEventListener('click', hideWelcomeModal);
-
-        // Ejecutar la verificación al cargar la página
-        window.onload = checkModalDisplay;
     </script>
-
 </body>
 </html>
-            
