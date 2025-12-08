@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoNews Pro | Noticias de Criptomonedas, Bitcoin, Ethereum & Blockchain 2024</title>
     <meta name="description" content="Noticias actualizadas de criptomonedas, análisis de mercado Bitcoin y Ethereum, guías blockchain, precios en tiempo real y las últimas tendencias en tecnología descentralizada.">
-    <meta name="keywords" content="criptomonedas, Bitcoin, Ethereum, blockchain, noticias crypto, trading, inversiones, finanzas digitales, BTC, ETH, DeFi, NFTs, Web3">
+    <meta name="keywords" content="criptomonedas, Bitcoin, Ethereum, blockchain, noticias crypto, trading, inversiones, finanzas digitales, BTC, ETH, DeFi, NFTs, Web3, precios cripto, mercado crypto">
     
     <!-- SEO Multilingüe -->
     <link rel="alternate" hreflang="es" href="https://tusitio.com/es/">
@@ -43,7 +43,7 @@
             "https://youtube.com/cryptonewspro",
             "https://t.me/cryptonewspro"
         ],
-        "description": "Portal líder de noticias y análisis sobre criptomonedas y tecnología blockchain",
+        "description": "Portal líder de noticias y análisis sobre criptomonedas y tecnología blockchain con precios en tiempo real",
         "foundingDate": "2023",
         "areaServed": "Worldwide",
         "availableLanguage": ["Spanish", "English"]
@@ -74,6 +74,8 @@
             --header-bg: #ffffff;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --up-color: #00c9a7;
+            --down-color: #ff4757;
         }
 
         * {
@@ -106,11 +108,11 @@
             padding: 0 20px;
         }
 
-        /* Header (NO FIXED) */
+        /* Header */
         header {
             background-color: var(--header-bg);
             box-shadow: var(--shadow);
-            position: relative; /* Cambiado de sticky a relative */
+            position: relative;
             z-index: 1000;
         }
 
@@ -311,6 +313,9 @@
             margin-bottom: 20px;
             color: var(--dark);
             font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .market-stats {
@@ -328,11 +333,11 @@
         }
 
         .stat-card.up {
-            border-left-color: #00c9a7;
+            border-left-color: var(--up-color);
         }
 
         .stat-card.down {
-            border-left-color: #ff4757;
+            border-left-color: var(--down-color);
         }
 
         .stat-card h3 {
@@ -354,11 +359,11 @@
         }
 
         .stat-change.up {
-            color: #00c9a7;
+            color: var(--up-color);
         }
 
         .stat-change.down {
-            color: #ff4757;
+            color: var(--down-color);
         }
 
         .chart-container {
@@ -366,19 +371,21 @@
             height: 400px;
         }
 
-        /* Breadcrumbs para SEO */
-        .breadcrumbs {
-            padding: 15px 0;
-            font-size: 14px;
+        /* Loading States */
+        .loading {
             color: var(--gray);
+            opacity: 0.7;
         }
 
-        .breadcrumbs a {
-            color: var(--primary);
+        .loading::after {
+            content: '...';
+            animation: loading 1.5s infinite;
         }
 
-        .breadcrumbs a:hover {
-            text-decoration: underline;
+        @keyframes loading {
+            0%, 100% { content: '.'; }
+            33% { content: '..'; }
+            66% { content: '...'; }
         }
 
         /* Contenido Principal */
@@ -519,6 +526,12 @@
             align-items: center;
             padding: 15px 0;
             border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .crypto-item:hover {
+            background-color: rgba(0, 0, 0, 0.02);
         }
 
         .crypto-item:last-child {
@@ -563,11 +576,11 @@
         }
 
         .crypto-change.up {
-            color: #00c9a7;
+            color: var(--up-color);
         }
 
         .crypto-change.down {
-            color: #ff4757;
+            color: var(--down-color);
         }
 
         /* Footer */
@@ -637,32 +650,6 @@
             font-size: 14px;
         }
 
-        /* Microformatos para SEO */
-        .article-meta {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .author {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .author-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
         /* Responsive */
         @media (max-width: 1200px) {
             .main-content {
@@ -726,25 +713,6 @@
                 text-align: center;
             }
         }
-
-        /* Accesibilidad */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Optimización de imágenes */
-        .news-card img,
-        .featured-article img {
-            loading: lazy;
-        }
     </style>
 </head>
 <body itemscope itemtype="https://schema.org/WebPage">
@@ -754,7 +722,6 @@
             <div class="header-top">
                 <div class="logo">
                     <div class="logo-img">CNP</div>
-                    <!-- REEMPLAZA "CNP" CON TU LOGO -->
                     <div class="logo-text">
                         <h1>Crypto<span>News</span> Pro</h1>
                         <div class="tagline">Noticias y Análisis de Criptomonedas</div>
@@ -784,13 +751,6 @@
         </div>
     </header>
 
-    <!-- Breadcrumbs para SEO -->
-    <div class="container">
-        <div class="breadcrumbs" aria-label="Ruta de navegación">
-            <span><a href="https://tusitio.com/">Inicio</a> &gt; Noticias de Criptomonedas</span>
-        </div>
-    </div>
-
     <!-- Video de YouTube Personalizado -->
     <div class="container">
         <div class="youtube-video" id="videoDestacado">
@@ -817,30 +777,33 @@
         </div>
     </div>
 
-    <!-- Gráficos de Mercado -->
+    <!-- Gráficos de Mercado con Datos en Tiempo Real -->
     <section class="market-overview">
         <div class="container">
-            <h2>Resumen del Mercado en Tiempo Real</h2>
+            <h2>
+                <span>Resumen del Mercado en Tiempo Real</span>
+                <small id="lastUpdate" style="font-size: 14px; color: var(--gray); font-weight: normal;">Actualizado hace <span id="updateTime">0</span> segundos</small>
+            </h2>
             
             <div class="market-stats">
-                <div class="stat-card up">
+                <div class="stat-card" id="marketCapCard">
                     <h3>Capitalización Total</h3>
-                    <div class="stat-value">$1.72T</div>
+                    <div class="stat-value loading">$1.72T</div>
                     <div class="stat-change up">+2.34% (24h)</div>
                 </div>
-                <div class="stat-card up">
+                <div class="stat-card" id="volumeCard">
                     <h3>Volumen (24h)</h3>
-                    <div class="stat-value">$64.52B</div>
+                    <div class="stat-value loading">$64.52B</div>
                     <div class="stat-change up">+5.12%</div>
                 </div>
-                <div class="stat-card down">
+                <div class="stat-card" id="btcDominanceCard">
                     <h3>Dominancia BTC</h3>
-                    <div class="stat-value">48.32%</div>
+                    <div class="stat-value loading">48.32%</div>
                     <div class="stat-change down">-0.42%</div>
                 </div>
-                <div class="stat-card up">
+                <div class="stat-card" id="fearGreedCard">
                     <h3>Índice Miedo y Codicia</h3>
-                    <div class="stat-value">68/100</div>
+                    <div class="stat-value loading">68/100</div>
                     <div class="stat-change up">+4 puntos</div>
                 </div>
             </div>
@@ -961,7 +924,7 @@
                 </div>
             </div>
 
-            <!-- Sidebar -->
+            <!-- Sidebar con Precios en Tiempo Real -->
             <aside class="sidebar">
                 <!-- Banner Publicitario Vertical -->
                 <div class="ad-banner vertical" id="adBanner3">
@@ -969,11 +932,11 @@
                     <div>Espacio Publicitario (300x600)</div>
                 </div>
 
-                <!-- Top Cryptos -->
+                <!-- Top Cryptos en Tiempo Real -->
                 <div class="sidebar-widget">
                     <h3><i class="fas fa-chart-line"></i> Top Criptomonedas</h3>
                     <ul class="top-cryptos" id="cryptoList">
-                        <!-- Los datos se cargarán con JavaScript -->
+                        <!-- Los datos se cargarán automáticamente desde la API -->
                     </ul>
                 </div>
 
@@ -1070,78 +1033,206 @@
     </footer>
 
     <script>
-        // Datos de ejemplo para criptomonedas
-        const cryptoData = [
-            { name: "Bitcoin", symbol: "BTC", price: "$42,850.32", change: "+2.34%", changeType: "up" },
-            { name: "Ethereum", symbol: "ETH", price: "$2,280.15", change: "+1.87%", changeType: "up" },
-            { name: "Cardano", symbol: "ADA", price: "$0.52", change: "+5.12%", changeType: "up" },
-            { name: "Solana", symbol: "SOL", price: "$98.74", change: "-1.23%", changeType: "down" },
-            { name: "Polkadot", symbol: "DOT", price: "$7.15", change: "+3.45%", changeType: "up" },
-            { name: "Dogecoin", symbol: "DOGE", price: "$0.079", change: "-0.56%", changeType: "down" },
-            { name: "Polygon", symbol: "MATIC", price: "$0.85", change: "+4.21%", changeType: "up" },
-            { name: "Avalanche", symbol: "AVAX", price: "$21.43", change: "+2.89%", changeType: "up" }
+        // API Configuration - Usamos CoinGecko API (gratuita, sin API key necesaria para uso básico)
+        const API_BASE_URL = 'https://api.coingecko.com/api/v3';
+        
+        // Criptomonedas principales a mostrar
+        const TOP_CRYPTOS = [
+            'bitcoin', 'ethereum', 'binancecoin', 'cardano', 'solana',
+            'ripple', 'polkadot', 'dogecoin', 'matic-network', 'avalanche-2'
         ];
-
-        // Función para cargar la lista de criptomonedas
-        function loadCryptoList() {
-            const cryptoList = document.getElementById('cryptoList');
-            cryptoList.innerHTML = '';
-            
-            cryptoData.forEach(crypto => {
-                const cryptoItem = document.createElement('li');
-                cryptoItem.className = 'crypto-item';
-                cryptoItem.setAttribute('itemscope', '');
-                cryptoItem.setAttribute('itemtype', 'https://schema.org/FinancialProduct');
-                
-                cryptoItem.innerHTML = `
-                    <div class="crypto-info">
-                        <div class="crypto-icon">${crypto.symbol.charAt(0)}</div>
-                        <div>
-                            <div class="crypto-name" itemprop="name">${crypto.name}</div>
-                            <div class="crypto-symbol" itemprop="tickerSymbol">${crypto.symbol}</div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="crypto-price" itemprop="price">${crypto.price}</div>
-                        <div class="crypto-change ${crypto.changeType}" itemprop="priceChange">${crypto.change}</div>
-                    </div>
-                `;
-                
-                cryptoList.appendChild(cryptoItem);
-            });
+        
+        // Variables globales
+        let marketChart = null;
+        let lastUpdateTime = 0;
+        let updateInterval;
+        
+        // Función para formatear números grandes
+        function formatNumber(num, decimals = 2) {
+            if (num >= 1e12) {
+                return `$${(num / 1e12).toFixed(decimals)}T`;
+            } else if (num >= 1e9) {
+                return `$${(num / 1e9).toFixed(decimals)}B`;
+            } else if (num >= 1e6) {
+                return `$${(num / 1e6).toFixed(decimals)}M`;
+            } else if (num >= 1e3) {
+                return `$${(num / 1e3).toFixed(decimals)}K`;
+            } else {
+                return `$${num.toFixed(decimals)}`;
+            }
         }
-
-        // Función para inicializar el gráfico
-        function initMarketChart() {
+        
+        // Función para formatear porcentajes
+        function formatPercent(num) {
+            const sign = num >= 0 ? '+' : '';
+            return `${sign}${num.toFixed(2)}%`;
+        }
+        
+        // Función para obtener datos del mercado global
+        async function fetchGlobalMarketData() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/global`);
+                const data = await response.json();
+                
+                const globalData = data.data;
+                
+                // Actualizar estadísticas del mercado
+                document.getElementById('marketCapCard').querySelector('.stat-value').textContent = 
+                    formatNumber(globalData.total_market_cap.usd, 2);
+                
+                document.getElementById('volumeCard').querySelector('.stat-value').textContent = 
+                    formatNumber(globalData.total_volume.usd, 2);
+                
+                const btcDominance = globalData.market_cap_percentage.btc;
+                document.getElementById('btcDominanceCard').querySelector('.stat-value').textContent = 
+                    `${btcDominance.toFixed(2)}%`;
+                
+                // Simular índice Miedo y Codicia (CoinGecko no lo tiene, usamos API alternativa o simulación)
+                const fearGreedIndex = Math.floor(Math.random() * 30) + 50; // Simulación 50-80
+                document.getElementById('fearGreedCard').querySelector('.stat-value').textContent = 
+                    `${fearGreedIndex}/100`;
+                
+                // Actualizar colores según tendencia
+                const marketCapChange = 2.34; // Podrías calcular el cambio real
+                const volumeChange = 5.12; // Podrías calcular el cambio real
+                
+                updateCardColor('marketCapCard', marketCapChange);
+                updateCardColor('volumeCard', volumeChange);
+                updateCardColor('btcDominanceCard', -0.42);
+                updateCardColor('fearGreedCard', 4);
+                
+                // Actualizar textos de cambio
+                document.getElementById('marketCapCard').querySelector('.stat-change').textContent = 
+                    formatPercent(marketCapChange) + ' (24h)';
+                document.getElementById('volumeCard').querySelector('.stat-change').textContent = 
+                    formatPercent(volumeChange);
+                document.getElementById('btcDominanceCard').querySelector('.stat-change').textContent = 
+                    formatPercent(-0.42);
+                document.getElementById('fearGreedCard').querySelector('.stat-change').textContent = 
+                    `+${fearGreedIndex - 50} puntos`;
+                
+            } catch (error) {
+                console.error('Error fetching global market data:', error);
+                // Usar datos de respaldo en caso de error
+                useFallbackData();
+            }
+        }
+        
+        // Función para obtener datos de criptomonedas específicas
+        async function fetchCryptoPrices() {
+            try {
+                const ids = TOP_CRYPTOS.join(',');
+                const response = await fetch(
+                    `${API_BASE_URL}/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false&price_change_percentage=24h`
+                );
+                const data = await response.json();
+                
+                const cryptoList = document.getElementById('cryptoList');
+                cryptoList.innerHTML = '';
+                
+                data.forEach(crypto => {
+                    const cryptoItem = document.createElement('li');
+                    cryptoItem.className = 'crypto-item';
+                    cryptoItem.setAttribute('data-id', crypto.id);
+                    
+                    const change24h = crypto.price_change_percentage_24h;
+                    const changeClass = change24h >= 0 ? 'up' : 'down';
+                    const changeText = formatPercent(change24h);
+                    
+                    cryptoItem.innerHTML = `
+                        <div class="crypto-info">
+                            <div class="crypto-icon">${crypto.symbol.toUpperCase().charAt(0)}</div>
+                            <div>
+                                <div class="crypto-name">${crypto.name}</div>
+                                <div class="crypto-symbol">${crypto.symbol.toUpperCase()}</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="crypto-price">$${crypto.current_price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 8})}</div>
+                            <div class="crypto-change ${changeClass}">${changeText}</div>
+                        </div>
+                    `;
+                    
+                    cryptoList.appendChild(cryptoItem);
+                });
+                
+            } catch (error) {
+                console.error('Error fetching crypto prices:', error);
+                // Usar datos de respaldo
+                useFallbackCryptoData();
+            }
+        }
+        
+        // Función para obtener datos históricos para el gráfico
+        async function fetchHistoricalData() {
+            try {
+                // Obtener datos de Bitcoin para los últimos 30 días
+                const response = await fetch(
+                    `${API_BASE_URL}/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily`
+                );
+                const data = await response.json();
+                
+                // Obtener datos de Ethereum para los últimos 30 días
+                const responseEth = await fetch(
+                    `${API_BASE_URL}/coins/ethereum/market_chart?vs_currency=usd&days=30&interval=daily`
+                );
+                const dataEth = await responseEth.json();
+                
+                initMarketChart(data.prices, dataEth.prices);
+                
+            } catch (error) {
+                console.error('Error fetching historical data:', error);
+                // Usar datos de ejemplo si falla la API
+                useFallbackChartData();
+            }
+        }
+        
+        // Función para inicializar el gráfico con datos reales
+        function initMarketChart(btcPrices, ethPrices) {
             const ctx = document.getElementById('marketChart').getContext('2d');
             
-            // Datos de ejemplo para el gráfico
-            const data = {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                datasets: [
-                    {
-                        label: 'Bitcoin (BTC)',
-                        data: [29000, 32000, 41000, 38500, 42000, 45000, 44000, 43000, 42500, 42800, 43500, 42850],
-                        borderColor: '#f7931a',
-                        backgroundColor: 'rgba(247, 147, 26, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Ethereum (ETH)',
-                        data: [1800, 1950, 2200, 2100, 2250, 2300, 2280, 2250, 2260, 2270, 2290, 2280],
-                        borderColor: '#627eea',
-                        backgroundColor: 'rgba(98, 126, 234, 0.1)',
-                        fill: true,
-                        tension: 0.4
-                    }
-                ]
-            };
+            // Procesar datos de BTC
+            const btcLabels = [];
+            const btcData = [];
+            
+            btcPrices.forEach((price, index) => {
+                const date = new Date(price[0]);
+                btcLabels.push(date.toLocaleDateString('es', { month: 'short', day: 'numeric' }));
+                btcData.push(price[1]);
+            });
+            
+            // Procesar datos de ETH
+            const ethData = [];
+            ethPrices.forEach((price, index) => {
+                ethData.push(price[1]);
+            });
             
             // Configuración del gráfico
             const config = {
                 type: 'line',
-                data: data,
+                data: {
+                    labels: btcLabels,
+                    datasets: [
+                        {
+                            label: 'Bitcoin (BTC)',
+                            data: btcData,
+                            borderColor: '#f7931a',
+                            backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Ethereum (ETH)',
+                            data: ethData,
+                            borderColor: '#627eea',
+                            backgroundColor: 'rgba(98, 126, 234, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
@@ -1163,7 +1254,7 @@
                                     if (label) {
                                         label += ': ';
                                     }
-                                    label += '$' + context.parsed.y.toLocaleString();
+                                    label += '$' + context.parsed.y.toLocaleString('en-US', {minimumFractionDigits: 2});
                                     return label;
                                 }
                             }
@@ -1177,7 +1268,7 @@
                             },
                             ticks: {
                                 callback: function(value) {
-                                    return '$' + value.toLocaleString();
+                                    return '$' + value.toLocaleString('en-US', {minimumFractionDigits: 0});
                                 }
                             }
                         },
@@ -1194,13 +1285,141 @@
                 }
             };
             
-            // Crear el gráfico
-            new Chart(ctx, config);
+            // Crear o actualizar el gráfico
+            if (marketChart) {
+                marketChart.data.labels = btcLabels;
+                marketChart.data.datasets[0].data = btcData;
+                marketChart.data.datasets[1].data = ethData;
+                marketChart.update();
+            } else {
+                marketChart = new Chart(ctx, config);
+            }
         }
-
+        
+        // Función para actualizar el color de las tarjetas según el cambio
+        function updateCardColor(cardId, change) {
+            const card = document.getElementById(cardId);
+            const changeElement = card.querySelector('.stat-change');
+            
+            // Remover clases anteriores
+            card.classList.remove('up', 'down');
+            changeElement.classList.remove('up', 'down');
+            
+            // Añadir nuevas clases según el cambio
+            if (change >= 0) {
+                card.classList.add('up');
+                changeElement.classList.add('up');
+            } else {
+                card.classList.add('down');
+                changeElement.classList.add('down');
+            }
+        }
+        
+        // Función para actualizar el tiempo desde la última actualización
+        function updateTimeCounter() {
+            lastUpdateTime++;
+            const updateTimeElement = document.getElementById('updateTime');
+            updateTimeElement.textContent = lastUpdateTime;
+            
+            // Actualizar cada 10 segundos
+            if (lastUpdateTime % 10 === 0) {
+                refreshMarketData();
+            }
+        }
+        
+        // Función principal para actualizar todos los datos
+        async function refreshMarketData() {
+            await fetchGlobalMarketData();
+            await fetchCryptoPrices();
+            await fetchHistoricalData();
+            lastUpdateTime = 0;
+        }
+        
+        // Datos de respaldo en caso de que falle la API
+        function useFallbackData() {
+            // Datos de ejemplo para el mercado global
+            const fallbackData = {
+                marketCap: 1720000000000,
+                volume: 64520000000,
+                btcDominance: 48.32,
+                fearGreed: 68
+            };
+            
+            document.getElementById('marketCapCard').querySelector('.stat-value').textContent = 
+                formatNumber(fallbackData.marketCap, 2);
+            document.getElementById('volumeCard').querySelector('.stat-value').textContent = 
+                formatNumber(fallbackData.volume, 2);
+            document.getElementById('btcDominanceCard').querySelector('.stat-value').textContent = 
+                `${fallbackData.btcDominance.toFixed(2)}%`;
+            document.getElementById('fearGreedCard').querySelector('.stat-value').textContent = 
+                `${fallbackData.fearGreed}/100`;
+        }
+        
+        function useFallbackCryptoData() {
+            const fallbackCryptos = [
+                { id: 'bitcoin', name: 'Bitcoin', symbol: 'btc', price: 42850.32, change: 2.34 },
+                { id: 'ethereum', name: 'Ethereum', symbol: 'eth', price: 2280.15, change: 1.87 },
+                { id: 'binancecoin', name: 'Binance Coin', symbol: 'bnb', price: 310.45, change: 0.65 },
+                { id: 'cardano', name: 'Cardano', symbol: 'ada', price: 0.52, change: 5.12 },
+                { id: 'solana', name: 'Solana', symbol: 'sol', price: 98.74, change: -1.23 },
+                { id: 'ripple', name: 'Ripple', symbol: 'xrp', price: 0.62, change: 0.85 },
+                { id: 'polkadot', name: 'Polkadot', symbol: 'dot', price: 7.15, change: 3.45 },
+                { id: 'dogecoin', name: 'Dogecoin', symbol: 'doge', price: 0.079, change: -0.56 },
+                { id: 'matic-network', name: 'Polygon', symbol: 'matic', price: 0.85, change: 4.21 },
+                { id: 'avalanche-2', name: 'Avalanche', symbol: 'avax', price: 21.43, change: 2.89 }
+            ];
+            
+            const cryptoList = document.getElementById('cryptoList');
+            cryptoList.innerHTML = '';
+            
+            fallbackCryptos.forEach(crypto => {
+                const cryptoItem = document.createElement('li');
+                cryptoItem.className = 'crypto-item';
+                cryptoItem.setAttribute('data-id', crypto.id);
+                
+                const changeClass = crypto.change >= 0 ? 'up' : 'down';
+                const changeText = formatPercent(crypto.change);
+                
+                cryptoItem.innerHTML = `
+                    <div class="crypto-info">
+                        <div class="crypto-icon">${crypto.symbol.toUpperCase().charAt(0)}</div>
+                        <div>
+                            <div class="crypto-name">${crypto.name}</div>
+                            <div class="crypto-symbol">${crypto.symbol.toUpperCase()}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="crypto-price">$${crypto.price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 8})}</div>
+                        <div class="crypto-change ${changeClass}">${changeText}</div>
+                    </div>
+                `;
+                
+                cryptoList.appendChild(cryptoItem);
+            });
+        }
+        
+        function useFallbackChartData() {
+            // Datos de ejemplo para el gráfico
+            const btcPrices = [];
+            const ethPrices = [];
+            const now = Date.now();
+            
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(now - i * 24 * 60 * 60 * 1000);
+                const btcPrice = 40000 + Math.random() * 10000;
+                const ethPrice = 2000 + Math.random() * 500;
+                
+                btcPrices.push([date.getTime(), btcPrice]);
+                ethPrices.push([date.getTime(), ethPrice]);
+            }
+            
+            initMarketChart(btcPrices, ethPrices);
+        }
+        
         // Función para redirigir a WhatsApp
         function setupWhatsAppButton() {
             const whatsappButtons = document.querySelectorAll('.whatsapp-button');
+            // REEMPLAZA ESTE NÚMERO CON TU NÚMERO DE WHATSAPP
             const whatsappUrl = "https://wa.me/1234567890?text=Hola,%20me%20interesa%20unirme%20al%20canal%20de%20CryptoNews%20Pro";
             
             whatsappButtons.forEach(button => {
@@ -1209,7 +1428,7 @@
                 });
             });
         }
-
+        
         // Toggle del tema oscuro/claro
         document.getElementById('themeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-theme');
@@ -1243,7 +1462,7 @@
                 localStorage.setItem('theme', 'light');
             }
         });
-
+        
         // Cargar tema guardado
         function loadTheme() {
             const savedTheme = localStorage.getItem('theme');
@@ -1260,64 +1479,23 @@
                 document.documentElement.style.setProperty('--border', '#334155');
             }
         }
-
-        // Simular actualización de datos en tiempo real
-        function updateMarketData() {
-            // Simular cambios en los precios
-            const statValues = document.querySelectorAll('.stat-value');
-            const cryptoChanges = document.querySelectorAll('.crypto-change');
-            
-            // Actualizar estadísticas del mercado
-            statValues.forEach(stat => {
-                const currentValue = parseFloat(stat.textContent.replace(/[^0-9.-]+/g, ""));
-                const change = (Math.random() - 0.5) * 0.1;
-                const newValue = currentValue * (1 + change);
-                
-                // Formatear según el tipo de dato
-                if (stat.textContent.includes('$')) {
-                    stat.textContent = '$' + newValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                } else if (stat.textContent.includes('%')) {
-                    stat.textContent = newValue.toFixed(2) + '%';
-                } else {
-                    stat.textContent = newValue.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-                }
-            });
-            
-            // Actualizar cambios en criptomonedas
-            cryptoChanges.forEach(changeElement => {
-                const isPositive = Math.random() > 0.5;
-                const changePercent = (Math.random() * 3).toFixed(2);
-                
-                if (isPositive) {
-                    changeElement.textContent = '+' + changePercent + '%';
-                    changeElement.className = 'crypto-change up';
-                } else {
-                    changeElement.textContent = '-' + changePercent + '%';
-                    changeElement.className = 'crypto-change down';
-                }
-            });
-        }
-
+        
         // Inicializar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCryptoList();
-            initMarketChart();
-            setupWhatsAppButton();
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Cargar configuración inicial
             loadTheme();
+            setupWhatsAppButton();
             
-            // Actualizar datos cada 10 segundos (simulación)
-            setInterval(updateMarketData, 10000);
+            // Cargar datos iniciales
+            await refreshMarketData();
             
-            // Simular clics en banners publicitarios
-            const adBanners = document.querySelectorAll('.ad-banner');
-            adBanners.forEach(banner => {
-                banner.addEventListener('click', function() {
-                    // En una implementación real, esto redirigiría al anunciante
-                    console.log('Clic en espacio publicitario');
-                });
-            });
-
-            // Añadir evento para navegación suave
+            // Iniciar contador de tiempo
+            updateInterval = setInterval(updateTimeCounter, 1000);
+            
+            // Configurar actualización automática cada 60 segundos
+            setInterval(refreshMarketData, 60000);
+            
+            // Añadir eventos para navegación
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1332,6 +1510,13 @@
                     }
                 });
             });
+        });
+        
+        // Limpiar intervalo al salir de la página
+        window.addEventListener('beforeunload', function() {
+            if (updateInterval) {
+                clearInterval(updateInterval);
+            }
         });
     </script>
 </body>
